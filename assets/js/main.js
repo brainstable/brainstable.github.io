@@ -53,6 +53,36 @@
     sections.forEach(function (section) { spy.observe(section); });
   }
 
+  /* Переключение темы -------------------------------------------------- */
+  var root = document.documentElement;
+  var toggle = document.getElementById('themeToggle');
+
+  var setTheme = function (theme, persist) {
+    root.dataset.theme = theme;
+
+    if (toggle) {
+      var light = theme === 'light';
+      toggle.setAttribute('aria-pressed', String(light));
+      toggle.setAttribute('aria-label', light ? 'Включить тёмную тему' : 'Включить светлую тему');
+      toggle.title = light ? 'Тёмная тема' : 'Светлая тема';
+    }
+
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', theme === 'light' ? '#f6f8fb' : '#0a0e13');
+
+    if (persist) {
+      try { localStorage.setItem('theme', theme); } catch (e) { /* приватный режим */ }
+    }
+  };
+
+  if (toggle) {
+    toggle.addEventListener('click', function () {
+      setTheme(root.dataset.theme === 'light' ? 'dark' : 'light', true);
+    });
+  }
+
+  setTheme(root.dataset.theme === 'dark' ? 'dark' : 'light', false);
+
   /* Год в подвале ------------------------------------------------------ */
   Array.prototype.forEach.call(document.querySelectorAll('.js-year'), function (el) {
     el.textContent = String(new Date().getFullYear());

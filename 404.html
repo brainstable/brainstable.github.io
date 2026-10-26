@@ -5,7 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Страница не найдена — Сергей Мозговой</title>
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#0a0e13">
+<meta name="theme-color" content="#f6f8fb">
+<script>
+  (function () {
+    try {
+      var saved = localStorage.getItem('theme');
+      document.documentElement.dataset.theme = (saved === 'dark' || saved === 'light') ? saved : 'light';
+    } catch (e) {
+      document.documentElement.dataset.theme = 'light';
+    }
+  })();
+</script>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>

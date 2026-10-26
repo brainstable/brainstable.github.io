@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Превью документа бюллетеня">
+  <defs>
+    <linearGradient id="pb-bg" x1="0" y1="0" x2="0.7" y2="1">
+      <stop offset="0" stop-color="#f2f6fb"/>
+      <stop offset="1" stop-color="#e6ecf4"/>
+    </linearGradient>
+    <pattern id="pb-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#0f172a" stroke-opacity="0.05"/>
+    </pattern>
+    <filter id="pb-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#0f172a" flood-opacity="0.22"/>
+    </filter>
+    <linearGradient id="pb-page" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#fbfdff"/>
+      <stop offset="1" stop-color="#e9eff7"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#pb-bg)"/>
+  <rect width="800" height="500" fill="url(#pb-grid)"/>
+
+  <!-- задний лист -->
+  <g transform="rotate(-4 400 260)">
+    <rect x="222" y="86" width="330" height="420" rx="6" fill="#c3cfdf" fill-opacity="0.8"/>
+  </g>
+
+  <!-- страница -->
+  <g filter="url(#pb-shadow)" transform="rotate(1.2 400 260)">
+    <rect x="248" y="60" width="330" height="430" rx="6" fill="url(#pb-page)"/>
+
+    <!-- шапка -->
+    <rect x="278" y="88" width="270" height="4" rx="2" fill="#0f151d" fill-opacity="0.75"/>
+    <rect x="278" y="100" width="180" height="3" rx="1.5" fill="#0f151d" fill-opacity="0.35"/>
+    <rect x="278" y="122" width="220" height="8" rx="2" fill="#0f151d" fill-opacity="0.8"/>
+    <rect x="278" y="138" width="140" height="6" rx="2" fill="#0f151d" fill-opacity="0.4"/>
+
+    <!-- таблица -->
+    <g>
+      <rect x="278" y="166" width="270" height="20" fill="#1c6b52" fill-opacity="0.85"/>
+      <g fill="#ffffff" fill-opacity="0.85">
+        <rect x="284" y="173" width="40" height="5" rx="2"/>
+        <rect x="336" y="173" width="52" height="5" rx="2"/>
+        <rect x="400" y="173" width="34" height="5" rx="2"/>
+        <rect x="446" y="173" width="46" height="5" rx="2"/>
+        <rect x="504" y="173" width="30" height="5" rx="2"/>
+      </g>
+
+      <g stroke="#0f151d" stroke-opacity="0.22" stroke-width="1">
+        <path d="M278 206 H548 M278 232 H548 M278 258 H548 M278 284 H548 M278 310 H548 M278 336 H548"/>
+        <path d="M330 166 V360 M392 166 V360 M436 166 V360 M492 166 V360"/>
+      </g>
+
+      <g fill="#0f151d" fill-opacity="0.5">
+        <rect x="284" y="214" width="40" height="4" rx="2"/><rect x="338" y="214" width="46" height="4" rx="2"/><rect x="398" y="214" width="28" height="4" rx="2"/><rect x="442" y="214" width="42" height="4" rx="2"/><rect x="498" y="214" width="34" height="4" rx="2"/>
+        <rect x="284" y="240" width="36" height="4" rx="2"/><rect x="338" y="240" width="50" height="4" rx="2"/><rect x="398" y="240" width="32" height="4" rx="2"/><rect x="442" y="240" width="38" height="4" rx="2"/><rect x="498" y="240" width="28" height="4" rx="2"/>
+        <rect x="284" y="266" width="42" height="4" rx="2"/><rect x="338" y="266" width="44" height="4" rx="2"/><rect x="398" y="266" width="26" height="4" rx="2"/><rect x="442" y="266" width="44" height="4" rx="2"/><rect x="498" y="266" width="32" height="4" rx="2"/>
+        <rect x="284" y="292" width="38" height="4" rx="2"/><rect x="338" y="292" width="48" height="4" rx="2"/><rect x="398" y="292" width="30" height="4" rx="2"/><rect x="442" y="292" width="40" height="4" rx="2"/><rect x="498" y="292" width="26" height="4" rx="2"/>
+        <rect x="284" y="318" width="40" height="4" rx="2"/><rect x="338" y="318" width="42" height="4" rx="2"/><rect x="398" y="318" width="34" height="4" rx="2"/><rect x="442" y="318" width="36" height="4" rx="2"/><rect x="498" y="318" width="30" height="4" rx="2"/>
+        <rect x="284" y="344" width="36" height="4" rx="2"/><rect x="338" y="344" width="46" height="4" rx="2"/><rect x="398" y="344" width="28" height="4" rx="2"/><rect x="442" y="344" width="40" height="4" rx="2"/><rect x="498" y="344" width="34" height="4" rx="2"/>
+      </g>
+    </g>
+
+    <!-- подпись и печать -->
+    <path d="M278 402 H430" stroke="#0f151d" stroke-opacity="0.35" stroke-width="1"/>
+    <rect x="278" y="416" width="120" height="4" rx="2" fill="#0f151d" fill-opacity="0.3"/>
+
+    <g transform="translate(470 430) rotate(-12)">
+      <circle r="40" fill="none" stroke="#1c6b52" stroke-opacity="0.55" stroke-width="2.5"/>
+      <circle r="33" fill="none" stroke="#1c6b52" stroke-opacity="0.35" stroke-width="1"/>
+      <text y="2" text-anchor="middle" font-family="ui-sans-serif, Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#1c6b52" fill-opacity="0.7">ГСК</text>
+      <text y="16" text-anchor="middle" font-family="ui-sans-serif, Segoe UI, sans-serif" font-size="7" fill="#1c6b52" fill-opacity="0.55">бюллетень</text>
+    </g>
+  </g>
+
+  <!-- бейдж формата -->
+  <g transform="translate(600, 400)">
+    <rect width="150" height="42" rx="10" fill="#ffffff" stroke="#047857" stroke-opacity="0.35"/>
+    <text x="16" y="26" font-family="ui-monospace, Consolas, monospace" font-size="13" fill="#047857">.docx</text>
+    <text x="74" y="26" font-family="ui-monospace, Consolas, monospace" font-size="10" fill="#5a6a80">1 файл</text>
+  </g>
+</svg>

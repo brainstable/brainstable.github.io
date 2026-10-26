@@ -6,8 +6,27 @@
 <title>Сергей Мозговой — C#/.NET разработчик</title>
 <meta name="description" content="Прикладные программы для сортоиспытания и агрономии на C#/.NET: документы Word из шаблонов, обработка CSV и Excel, интерактивные карты на Leaflet.">
 <meta name="author" content="Сергей Мозговой">
-<meta name="theme-color" content="#0a0e13">
-<script>document.documentElement.classList.add('js');</script>
+<meta name="theme-color" content="#f6f8fb">
+<script>
+  (function () {
+    document.documentElement.classList.add('js');
+    try {
+      var param = null;
+      try {
+        param = new URLSearchParams(window.location.search).get('theme');
+      } catch (e) { /* старые браузеры */ }
+
+      var saved = localStorage.getItem('theme');
+      var theme = (param === 'light' || param === 'dark') ? param
+        : (saved === 'light' || saved === 'dark') ? saved
+        : 'light';
+
+      document.documentElement.dataset.theme = theme;
+    } catch (e) {
+      document.documentElement.dataset.theme = 'light';
+    }
+  })();
+</script>
 <link rel="canonical" href="https://brainstable.github.io/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ru_RU">
@@ -57,6 +76,11 @@
       <a class="nav__link" href="#contacts">Контакты</a>
     </nav>
 
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Включить светлую тему" aria-pressed="false" title="Светлая тема">
+      <svg class="icon icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.4v2.2M12 19.4v2.2M21.6 12h-2.2M4.6 12H2.4M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6M18.8 18.8l-1.6-1.6M6.8 6.8L5.2 5.2"/></svg>
+      <svg class="icon icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.3A8.5 8.5 0 0 1 9.7 3.5a8.5 8.5 0 1 0 10.8 10.8Z"/></svg>
+    </button>
+
     <a class="btn btn--ghost btn--sm header__gh" href="https://github.com/brainstable" target="_blank" rel="noopener">
       <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.4 7.4 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
       GitHub
@@ -94,7 +118,8 @@
 
       <div class="hero__art" aria-hidden="true">
         <div class="hero__frame">
-          <img src="assets/img/hero-map.svg" alt="" width="900" height="700" decoding="async">
+          <img class="theme-img theme-img--dark" src="assets/img/hero-map.svg" alt="" width="900" height="700" decoding="async">
+          <img class="theme-img theme-img--light" src="assets/img/hero-map-light.svg" alt="" width="900" height="700" decoding="async">
         </div>
         <span class="float float--1">.NET&nbsp;10</span>
         <span class="float float--2">GeoJSON</span>
@@ -123,7 +148,8 @@
       <div class="projects">
         <article class="card reveal">
           <a class="card__preview" href="https://github.com/brainstable/Brainstable.Applications" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
-            <img src="assets/img/preview-bulletin.svg" alt="" width="800" height="500" decoding="async">
+            <img class="theme-img theme-img--dark" src="assets/img/preview-bulletin.svg" alt="" width="800" height="500" decoding="async">
+            <img class="theme-img theme-img--light" src="assets/img/preview-bulletin-light.svg" alt="" width="800" height="500" decoding="async">
           </a>
           <div class="card__body">
             <div class="card__top">
