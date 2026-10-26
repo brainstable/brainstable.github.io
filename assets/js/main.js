@@ -124,6 +124,39 @@
     update();
   });
 
+  /* Поиск по каталогу программ ----------------------------------------- */
+  var programFilter = document.getElementById('progFilter');
+  if (programFilter) {
+    var progCount = document.getElementById('progCount');
+    var progs = Array.prototype.slice.call(document.querySelectorAll('.prog'));
+    var progGroups = Array.prototype.slice.call(document.querySelectorAll('[data-group]'));
+
+    var applyFilter = function () {
+      var query = programFilter.value.trim().toLowerCase();
+      var shown = 0;
+
+      progs.forEach(function (item) {
+        var hit = !query || (item.getAttribute('data-search') || '').indexOf(query) !== -1;
+        item.classList.toggle('is-hidden', !hit);
+        if (hit) shown++;
+      });
+
+      progGroups.forEach(function (group) {
+        var visible = group.querySelectorAll('.prog:not(.is-hidden)').length > 0;
+        group.classList.toggle('is-empty', !visible);
+      });
+
+      if (progCount) {
+        progCount.textContent = query
+          ? 'найдено ' + shown + ' из ' + progs.length
+          : progs.length + ' программ';
+      }
+    };
+
+    programFilter.addEventListener('input', applyFilter);
+    applyFilter();
+  }
+
   /* Год в подвале ------------------------------------------------------ */
   Array.prototype.forEach.call(document.querySelectorAll('.js-year'), function (el) {
     el.textContent = String(new Date().getFullYear());

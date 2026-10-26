@@ -1102,6 +1102,77 @@ a.lang__link:hover { color: var(--accent); background: var(--accent-soft); }
   .carousel__btn { width: 34px; height: 34px; }
 }
 
+/* ---------------------------------------------------------- Programs list */
+
+.programs {
+  max-width: 1080px;
+  margin-inline: auto;
+  padding: clamp(2rem, 4vw, 3rem) clamp(1.15rem, 4vw, 2rem) clamp(2.5rem, 6vw, 4rem);
+}
+
+.prog-search {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1rem;
+  margin: 1.4rem 0 1.8rem;
+}
+
+.prog-search input {
+  flex: 1 1 260px;
+  min-width: 0;
+  padding: 0.6rem 0.85rem;
+  border: 1px solid var(--line-hi);
+  border-radius: 10px;
+  background: var(--card);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.92rem;
+}
+.prog-search input:focus { outline: none; border-color: var(--accent-border); }
+
+.prog-search__count { font-family: var(--mono); font-size: 0.74rem; color: var(--muted); }
+
+.prog-group { margin-bottom: clamp(1.6rem, 3vw, 2.4rem); }
+.prog-group.is-empty { display: none; }
+
+.prog-group__title {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin: 0 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--line);
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+}
+
+.prog-group__count { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); }
+
+.prog-list { display: grid; gap: 0.9rem; }
+
+.prog {
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--card);
+}
+.prog.is-hidden { display: none; }
+
+.prog__head { display: flex; align-items: baseline; gap: 0.55rem; }
+.prog__num { font-family: var(--mono); font-size: 0.7rem; color: var(--muted); }
+.prog__title { margin: 0; font-size: 1rem; letter-spacing: -0.01em; }
+
+.prog__meta { margin: 0.25rem 0 0.5rem; font-size: 0.76rem; color: var(--muted); }
+.prog__text { margin: 0 0 0.7rem; font-size: 0.9rem; color: var(--muted); }
+.prog .chips { margin-bottom: 0.6rem; }
+
+.prog__more { font-size: 0.86rem; color: var(--muted); }
+.prog__more summary { cursor: pointer; color: var(--accent); font-size: 0.84rem; }
+.prog__more summary:hover { text-decoration: underline; text-underline-offset: 3px; }
+.prog__more .cv-list { margin: 0.6rem 0 0.5rem; }
+.prog__role { margin: 0.4rem 0 0; }
+
 /* ----------------------------------------------------------------- Footer */
 
 .footer { border-top: 1px solid var(--line); padding-block: 2rem; }

@@ -42,6 +42,7 @@
 
     // Инициализация карты
     var map = L.map('map', mapOptions);
+    map.attributionControl.setPrefix(false);
     map.setView([y, x], 14);
 
     //===============================================

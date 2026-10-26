@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Сергей Мозговой — C#/.NET разработчик</title>
-<meta name="description" content="Прикладные программы для сортоиспытания и агрономии на C#/.NET: документы Word из шаблонов, обработка CSV и Excel, интерактивные карты на Leaflet.">
+<meta name="description" content="Прикладные программы для сортоиспытания и агрономии на C#/.NET: документы Word из шаблонов, обработка CSV и Excel, интерактивные карты.">
 <meta name="author" content="Сергей Мозговой">
 <meta name="theme-color" content="#f6f8fb">
 <script>
@@ -42,7 +42,7 @@
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Сергей Мозговой — C#/.NET разработчик: документы Word и карты на Leaflet">
+<meta property="og:image:alt" content="Сергей Мозговой — C#/.NET разработчик: документы Word и карты">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Сергей Мозговой — C#/.NET разработчик">
 <meta name="twitter:description" content="Прикладные программы для сортоиспытания и агрономии: документы Word, обработка данных, интерактивные карты.">
@@ -75,7 +75,7 @@
     <nav class="nav" aria-label="Разделы страницы">
       <a class="nav__link" href="#projects">Проекты</a>
       <a class="nav__link" href="apps/">Приложения</a>
-      <a class="nav__link" href="#approach">Подход</a>
+      <a class="nav__link" href="programs/">Программы</a>
       <a class="nav__link" href="#stack">Стек</a>
       <a class="nav__link" href="resume/">Резюме</a>
       <a class="nav__link" href="#contacts">Контакты</a>
@@ -120,10 +120,10 @@
 
         <ul class="chips chips--hero" aria-label="Ключевые технологии">
           <li class="chip">.NET 10</li>
+          <li class="chip">ASP.NET Core</li>
           <li class="chip">WinForms</li>
+          <li class="chip">PostgreSQL</li>
           <li class="chip">Open XML SDK</li>
-          <li class="chip">Leaflet</li>
-          <li class="chip">GeoJSON</li>
         </ul>
       </div>
 
@@ -197,7 +197,7 @@
               подложек на выбор и легенда культур.
             </p>
             <ul class="chips" aria-label="Технологии">
-              <li class="chip">Leaflet</li><li class="chip">GeoJSON</li><li class="chip">Bootstrap</li><li class="chip">JavaScript</li>
+              <li class="chip">GeoJSON</li><li class="chip">Bootstrap</li><li class="chip">JavaScript</li>
             </ul>
             <div class="card__links">
               <a class="card__link" href="maps/geoplots/" target="_blank" rel="noopener">
@@ -225,7 +225,7 @@
               Координаты хранятся в <code>locations.xlsx</code>.
             </p>
             <ul class="chips" aria-label="Технологии">
-              <li class="chip">Leaflet</li><li class="chip">GeoJSON</li><li class="chip">Excel</li>
+              <li class="chip">GeoJSON</li><li class="chip">Excel</li>
             </ul>
             <div class="card__links">
               <a class="card__link" href="maps/geohistory/" target="_blank" rel="noopener">
@@ -260,6 +260,11 @@
           </div>
         </article>
       </div>
+
+      <p class="section__lead reveal" style="margin-top:1.6rem">
+        Ещё 44 программы и проекта — в <a href="programs/">каталоге</a>: коммерческие сервисы,
+        системы Госсорткомиссии, отраслевые приложения и научные проекты.
+      </p>
     </div>
   </section>
 
@@ -407,7 +412,7 @@
           <span class="step__num" aria-hidden="true">03</span>
           <h3 class="step__title">Карты</h3>
           <p class="step__text">
-            Leaflet и GeoJSON: слои участков, полей и дорог, переключение подложек
+            GeoJSON и растровые подложки: слои участков, полей и дорог, переключение подложек
             Google / Яндекс / Bing / ESRI / OSM, легенды и привязка к координатам.
           </p>
         </article>
@@ -418,34 +423,34 @@
   <section class="section" id="stack">
     <div class="wrap">
       <header class="section__head reveal">
-        <p class="eyebrow">04 — Стек</p>
+        <p class="eyebrow">04 — Технологии</p>
         <h2 class="section__title">Чем работаю</h2>
       </header>
 
       <div class="stack">
         <div class="stack__group reveal">
           <h3 class="stack__title">Языки</h3>
-          <ul class="chips"><li class="chip">C#</li><li class="chip">JavaScript</li><li class="chip">HTML</li><li class="chip">CSS</li></ul>
+          <ul class="chips"><li class="chip">C#</li><li class="chip">SQL</li><li class="chip">T-SQL</li><li class="chip">JavaScript</li><li class="chip">HTML</li><li class="chip">CSS</li><li class="chip">R</li></ul>
         </div>
         <div class="stack__group reveal">
-          <h3 class="stack__title">Платформа</h3>
-          <ul class="chips"><li class="chip">.NET 10</li><li class="chip">WinForms</li><li class="chip">ASP.NET Core</li><li class="chip">EF Core</li></ul>
+          <h3 class="stack__title">Платформы и фреймворки</h3>
+          <ul class="chips"><li class="chip">.NET 10</li><li class="chip">.NET Framework</li><li class="chip">ASP.NET Core</li><li class="chip">WinForms</li><li class="chip">EF Core</li><li class="chip">ADO.NET</li></ul>
+        </div>
+        <div class="stack__group reveal">
+          <h3 class="stack__title">Библиотеки</h3>
+          <ul class="chips"><li class="chip">Open XML SDK</li><li class="chip">NetTopologySuite</li><li class="chip">Quartz.NET</li><li class="chip">Polly</li><li class="chip">EasyNetQ</li><li class="chip">Serilog</li><li class="chip">Swagger / OpenAPI</li><li class="chip">Playwright</li><li class="chip">Lucene</li><li class="chip">HttpClient</li><li class="chip">JWT</li></ul>
         </div>
         <div class="stack__group reveal">
           <h3 class="stack__title">Данные и обмен</h3>
-          <ul class="chips"><li class="chip">PostgreSQL</li><li class="chip">RabbitMQ</li><li class="chip">Excel</li><li class="chip">CSV (CP1251)</li><li class="chip">XML</li></ul>
+          <ul class="chips"><li class="chip">PostgreSQL</li><li class="chip">PostGIS</li><li class="chip">SQL Server</li><li class="chip">RabbitMQ</li><li class="chip">OpenSearch</li><li class="chip">XML</li><li class="chip">JSON</li><li class="chip">Excel</li><li class="chip">CSV (CP1251)</li><li class="chip">Centura (SQLBase)</li><li class="chip">FoxPro</li></ul>
         </div>
         <div class="stack__group reveal">
-          <h3 class="stack__title">Документы</h3>
-          <ul class="chips"><li class="chip">Open XML SDK</li><li class="chip">DocumentFormat.OpenXml</li><li class="chip">Word-шаблоны</li></ul>
-        </div>
-        <div class="stack__group reveal">
-          <h3 class="stack__title">Карты</h3>
-          <ul class="chips"><li class="chip">Leaflet</li><li class="chip">GeoJSON</li><li class="chip">Bootstrap 4</li><li class="chip">jQuery</li></ul>
+          <h3 class="stack__title">ГИС и карты</h3>
+          <ul class="chips"><li class="chip">GeoJSON</li><li class="chip">ArcGIS</li><li class="chip">QGIS</li><li class="chip">GADM</li><li class="chip">Natural Earth</li></ul>
         </div>
         <div class="stack__group reveal">
           <h3 class="stack__title">Инструменты</h3>
-          <ul class="chips"><li class="chip">Visual Studio 2022</li><li class="chip">Rider</li><li class="chip">Git</li><li class="chip">xUnit</li></ul>
+          <ul class="chips"><li class="chip">Git</li><li class="chip">GitLab CI/CD</li><li class="chip">Docker</li><li class="chip">Kubernetes</li><li class="chip">Visual Studio</li><li class="chip">Rider</li><li class="chip">xUnit</li><li class="chip">Seq</li><li class="chip">Grafana</li><li class="chip">Loki</li></ul>
         </div>
       </div>
     </div>
