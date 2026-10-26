@@ -7,17 +7,25 @@
 ## Структура
 
 ```
-index.html                 страница
+index.html                 страница (русская)
+en/index.html              страница (английская)
 assets/css/style.css       оформление: светлая и тёмная темы
 assets/js/main.js          появление блоков, подсветка меню, переключатель темы
 assets/img/*.svg, *.jpg    иллюстрации и превью проектов (есть светлые версии)
-assets/og.png              картинка для соцсетей, 1200×630
+assets/og.png              картинка для соцсетей, ru, 1200×630
+assets/og-en.png           картинка для соцсетей, en, 1200×630
 assets/favicon.svg         иконка
 maps/geoplots/             живая карта сортоучастков (Leaflet)
 maps/geohistory/           живая карта исчезнувших деревень (Leaflet)
 .nojekyll                  отключает обработку Jekyll
 404.html                   страница для несуществующих адресов
 ```
+
+## Языки
+
+- Русская версия: <https://brainstable.github.io/>
+- Английская: <https://brainstable.github.io/en/>
+- Переключатель `RU / EN` в шапке, `hreflang` и `og:locale` в мета-тегах, отдельные OG-картинки.
 
 ## Темы
 

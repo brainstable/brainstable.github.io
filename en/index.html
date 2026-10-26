@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sergey Mozgovoy — C#/.NET developer</title>
+<meta name="description" content="Applied software for variety testing and agronomy in C#/.NET: Word documents from templates, CSV and Excel processing, interactive Leaflet maps.">
+<meta name="author" content="Sergey Mozgovoy">
+<meta name="theme-color" content="#f6f8fb">
+<script>
+  (function () {
+    document.documentElement.classList.add('js');
+    try {
+      var param = null;
+      try {
+        param = new URLSearchParams(window.location.search).get('theme');
+      } catch (e) { /* older browsers */ }
+
+      var saved = localStorage.getItem('theme');
+      var theme = (param === 'light' || param === 'dark') ? param
+        : (saved === 'light' || saved === 'dark') ? saved
+        : 'light';
+
+      document.documentElement.dataset.theme = theme;
+    } catch (e) {
+      document.documentElement.dataset.theme = 'light';
+    }
+  })();
+</script>
+<link rel="canonical" href="https://brainstable.github.io/en/">
+<link rel="alternate" hreflang="ru" href="https://brainstable.github.io/">
+<link rel="alternate" hreflang="en" href="https://brainstable.github.io/en/">
+<link rel="alternate" hreflang="x-default" href="https://brainstable.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ru_RU">
+<meta property="og:site_name" content="Sergey Mozgovoy">
+<meta property="og:title" content="Sergey Mozgovoy — C#/.NET developer">
+<meta property="og:description" content="Applied software for variety testing and agronomy: Word documents, data processing, interactive maps.">
+<meta property="og:url" content="https://brainstable.github.io/en/">
+<meta property="og:image" content="https://brainstable.github.io/assets/og-en.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Sergey Mozgovoy — C#/.NET developer: Word documents and Leaflet maps">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sergey Mozgovoy — C#/.NET developer">
+<meta name="twitter:description" content="Applied software for variety testing and agronomy: Word documents, data processing, interactive maps.">
+<meta name="twitter:image" content="https://brainstable.github.io/assets/og-en.png">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script src="../assets/js/main.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Sergey Mozgovoy",
+  "alternateName": "Сергей Мозговой",
+  "url": "https://brainstable.github.io/en/",
+  "jobTitle": "C#/.NET developer",
+  "sameAs": ["https://github.com/brainstable", "https://gist.github.com/brainstable"]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="header" id="header">
+  <div class="wrap header__inner">
+    <a class="brand" href="#top" aria-label="Back to top">
+      <span class="brand__mark" aria-hidden="true">СМ</span>
+      <span class="brand__name">Sergey Mozgovoy</span>
+    </a>
+
+    <nav class="nav" aria-label="Page sections">
+      <a class="nav__link" href="#projects">Projects</a>
+      <a class="nav__link" href="#internal">Private</a>
+      <a class="nav__link" href="#approach">Approach</a>
+      <a class="nav__link" href="#stack">Stack</a>
+      <a class="nav__link" href="#contacts">Contacts</a>
+    </nav>
+
+    <div class="lang" aria-label="Language">
+      <a class="lang__link" href="../" hreflang="ru" lang="ru">RU</a>
+      <span class="lang__link is-active" aria-current="true">EN</span>
+    </div>
+
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light theme" aria-pressed="false" title="Light theme">
+      <svg class="icon icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.4v2.2M12 19.4v2.2M21.6 12h-2.2M4.6 12H2.4M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6M18.8 18.8l-1.6-1.6M6.8 6.8L5.2 5.2"/></svg>
+      <svg class="icon icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.3A8.5 8.5 0 0 1 9.7 3.5a8.5 8.5 0 1 0 10.8 10.8Z"/></svg>
+    </button>
+
+    <a class="btn btn--ghost btn--sm header__gh" href="https://github.com/brainstable" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.4 7.4 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+      GitHub
+    </a>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top">
+    <div class="hero__glow" aria-hidden="true"></div>
+    <div class="wrap hero__inner">
+      <div class="hero__text">
+        <p class="eyebrow"><span class="dot" aria-hidden="true"></span> C#/.NET · Word documents · maps</p>
+
+        <h1 class="hero__title">Sergey<br><span class="grad">Mozgovoy</span></h1>
+
+        <p class="hero__lead">
+          I build applied software for variety testing and agronomy: turning database exports
+          into calculations, calculations into official documents, and coordinates into
+          interactive maps.
+        </p>
+
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#projects">View projects</a>
+          <a class="btn btn--ghost" href="https://github.com/brainstable" target="_blank" rel="noopener">GitHub profile&nbsp;↗</a>
+        </div>
+
+        <ul class="chips chips--hero" aria-label="Core technologies">
+          <li class="chip">.NET 10</li>
+          <li class="chip">WinForms</li>
+          <li class="chip">Open XML SDK</li>
+          <li class="chip">Leaflet</li>
+          <li class="chip">GeoJSON</li>
+        </ul>
+      </div>
+
+      <div class="hero__art" aria-hidden="true">
+        <div class="hero__frame">
+          <img class="theme-img theme-img--dark" src="../assets/img/hero-map.svg" alt="" width="900" height="700" decoding="async">
+          <img class="theme-img theme-img--light" src="../assets/img/hero-map-light.svg" alt="" width="900" height="700" decoding="async">
+        </div>
+        <span class="float float--1">.NET&nbsp;10</span>
+        <span class="float float--2">GeoJSON</span>
+        <span class="float float--3">.docx</span>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <dl class="metrics">
+        <div class="metric"><dt>Projects</dt><dd>10</dd></div>
+        <div class="metric"><dt>Repositories</dt><dd>81</dd></div>
+        <div class="metric"><dt>Trial sites on the map</dt><dd>18</dd></div>
+        <div class="metric"><dt>Word templates in the bulletin</dt><dd>16</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="wrap">
+      <header class="section__head reveal">
+        <p class="eyebrow">01 — Projects</p>
+        <h2 class="section__title">What I have built</h2>
+        <p class="section__lead">Four public repositories: from assembling an official bulletin to maps of trial sites and abandoned villages.</p>
+      </header>
+
+      <div class="projects">
+        <article class="card reveal">
+          <a class="card__preview" href="https://github.com/brainstable/Brainstable.Applications" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <img class="theme-img theme-img--dark" src="../assets/img/preview-bulletin.svg" alt="" width="800" height="500" decoding="async">
+            <img class="theme-img theme-img--light" src="../assets/img/preview-bulletin-light.svg" alt="" width="800" height="500" decoding="async">
+          </a>
+          <div class="card__body">
+            <div class="card__top">
+              <h3 class="card__title">Brainstable.Applications</h3>
+              <span class="badge badge--live">in progress</span>
+            </div>
+            <p class="card__sub">Official bulletin</p>
+            <p class="card__text">
+              Assembles the official bulletin of the state variety-testing commission from database
+              exports: 13 CP1251 CSV files, metrics across 15 tables of sections I–VIII, 16 Word
+              templates merged into a single <code>.docx</code> with a title page, contents and
+              continuous pagination.
+            </p>
+            <ul class="chips" aria-label="Technologies">
+              <li class="chip">C#</li><li class="chip">.NET 10</li><li class="chip">WinForms</li><li class="chip">Open XML</li>
+            </ul>
+            <a class="card__link" href="https://github.com/brainstable/Brainstable.Applications" target="_blank" rel="noopener">
+              Repository <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <a class="card__preview" href="../maps/geoplots/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <img src="../assets/img/preview-geoplots.jpg" alt="" width="800" height="500" decoding="async">
+          </a>
+          <div class="card__body">
+            <div class="card__top">
+              <h3 class="card__title">GeoPlots</h3>
+            </div>
+            <p class="card__sub">Trial sites on a map</p>
+            <p class="card__text">
+              Interactive map of 18 trial sites across Krasnoyarsk Krai, Khakassia and Tyva: site
+              boundaries, fields, 2020 crops and roads as separate GeoJSON layers, six basemaps
+              and a crop legend.
+            </p>
+            <ul class="chips" aria-label="Technologies">
+              <li class="chip">Leaflet</li><li class="chip">GeoJSON</li><li class="chip">Bootstrap</li><li class="chip">JavaScript</li>
+            </ul>
+            <div class="card__links">
+              <a class="card__link" href="../maps/geoplots/" target="_blank" rel="noopener">
+                Live map <span aria-hidden="true">↗</span>
+              </a>
+              <a class="card__link card__link--muted" href="https://github.com/brainstable/GeoPlots" target="_blank" rel="noopener">
+                Repository <span aria-hidden="true">→</span>
+              </a>
+            </div>
+            <p class="card__note">Map interface is in Russian</p>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <a class="card__preview" href="../maps/geohistory/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <img src="../assets/img/preview-geohistory.jpg" alt="" width="800" height="500" decoding="async">
+          </a>
+          <div class="card__body">
+            <div class="card__top">
+              <h3 class="card__title">GeoHistory</h3>
+            </div>
+            <p class="card__sub">Abandoned villages and burial mounds</p>
+            <p class="card__text">
+              A map of settlements that no longer exist and ancient burial mounds in Krasnoyarsk
+              Krai and Khakassia: existing and vanished villages, their boundaries and old roads.
+              Coordinates are stored in <code>locations.xlsx</code>.
+            </p>
+            <ul class="chips" aria-label="Technologies">
+              <li class="chip">Leaflet</li><li class="chip">GeoJSON</li><li class="chip">Excel</li>
+            </ul>
+            <div class="card__links">
+              <a class="card__link" href="../maps/geohistory/" target="_blank" rel="noopener">
+                Live map <span aria-hidden="true">↗</span>
+              </a>
+              <a class="card__link card__link--muted" href="https://github.com/brainstable/GeoHistory" target="_blank" rel="noopener">
+                Repository <span aria-hidden="true">→</span>
+              </a>
+            </div>
+            <p class="card__note">Map interface is in Russian</p>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <a class="card__preview card__preview--shot" href="https://github.com/brainstable/portfolio" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <span class="card__shot-tag">MeteoGSU</span>
+          </a>
+          <div class="card__body">
+            <div class="card__top">
+              <h3 class="card__title">portfolio</h3>
+            </div>
+            <p class="card__sub">Application showcase</p>
+            <p class="card__text">
+              Screenshots and descriptions of four internal applications: MeteoGSU with weather
+              data, hydrothermal coefficient and temperature sums; Sown areas; Variety testing
+              reference; and Statistical processing.
+            </p>
+            <ul class="chips" aria-label="Technologies">
+              <li class="chip">C#</li><li class="chip">WinForms</li><li class="chip">Excel</li><li class="chip">XML</li>
+            </ul>
+            <a class="card__link" href="https://github.com/brainstable/portfolio" target="_blank" rel="noopener">
+              Repository <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--divided" id="internal">
+    <div class="wrap">
+      <header class="section__head reveal">
+        <p class="eyebrow">02 — Private projects</p>
+        <h2 class="section__title">What else is in progress</h2>
+        <p class="section__lead">Six private projects: the code is closed, so no links or screenshots — just the task, the domain and the stack.</p>
+      </header>
+
+      <div class="projects projects--closed">
+        <article class="card card--closed reveal">
+          <div class="card__body">
+            <div class="card__top">
+              <h3 class="card__title">Field trials</h3>
+            </div>
+            <p class="card__sub">REST API · planning and records</p>
+            <p class="card__text">
+              Service for planning field trials and keeping records: designs with 1–4 factors,
+              Latin square and split plots, importing designs from CSV and XLSX, GPS coordinates
+              of the site, QR labels for plots, statistical processing and printed documents.
+            </p>
+            <ul class="chips" aria-label="Technologies">
+              <li class="chip">.NET 10</li><li class="chip">ASP.NET Core</li><li class="chip">EF Core</li><li class="chip">PostgreSQL</li><li class="chip">JWT</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card card--closed reveal">
+          <div class="card__body">
+            <div class="card__top">
+              <h3 class="card__title">Commission data support</h3>
+            </div>
+            <p class="card__sub">Branch application and analytics</p>
+            <p class="card__text">
+              Data on branches and trial sites with relevance confirmation, site comparison,
+              summaries and Excel reports, plans and allocations, user roles, backup and
+              installation.
+            </p>
+            <ul class="chips" aria-label="Technologies">
+              <li class="chip">C#</li><li class="chip">WinForms</li><li class="chip">EF Core</li><li class="chip">PostgreSQL</li><li class="chip">Excel</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card card--closed reveal">
+          <div class="card__body">
+            <div class="card__top">
+              <h3 class="card__title">Trial planning</h3>
+            </div>
+            <p class="card__sub">Orders, registers, plans</p>
+            <p class="card__text">
+              Orders, crops and trial groups, trial sites, registers and plans with Excel export.
+              Storage moved from XML files to PostgreSQL; data and service layers are separated.
+            </p>
+            <ul class="chips" aria-label="Technologies">
+              <li class="chip">C#</li><li class="chip">WinForms</li><li class="chip">PostgreSQL</li><li class="chip">Excel</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card card--closed reveal">
+          <div class="card__body">
+            <div class="card__top">
+              <h3 class="card__title">Centura → CSV</h3>
+            </div>
+            <p class="card__sub">Legacy database access</p>
+            <p class="card__text">
+              A library for accessing the Centura (SQLBase) database and a console export of
+              reference tables — database, varieties, plans, entries, DUS — into CSV for further
+              processing.
+            </p>
+            <ul class="chips" aria-label="Technologies">
+              <li class="chip">C#</li><li class="chip">SQLBase</li><li class="chip">CSV</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card card--closed reveal">
+          <div class="card__body">
+            <div class="card__top">
+              <h3 class="card__title">RP5 weather service</h3>
+            </div>
+            <p class="card__sub">Ingesting and publishing observations</p>
+            <p class="card__text">
+              Reads GZip archives from rp5.ru, detects the weather station type, parses
+              observations and converts raw text values into typed models, publishing JSON
+              to RabbitMQ.
+            </p>
+            <ul class="chips" aria-label="Technologies">
+              <li class="chip">.NET</li><li class="chip">RabbitMQ</li><li class="chip">GZip</li><li class="chip">JSON</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card card--closed reveal">
+          <div class="card__body">
+            <div class="card__top">
+              <h3 class="card__title">Barley GWAS</h3>
+            </div>
+            <p class="card__sub">Research</p>
+            <p class="card__text">
+              Finding loci associated with agronomically valuable traits in barley from the VIR
+              collection using GWAS: data preparation, computations and analysis of the results.
+            </p>
+            <ul class="chips" aria-label="Technologies">
+              <li class="chip">C#</li><li class="chip">GWAS</li><li class="chip">statistics</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="approach">
+    <div class="wrap">
+      <header class="section__head reveal">
+        <p class="eyebrow">03 — Approach</p>
+        <h2 class="section__title">Data → documents → maps</h2>
+        <p class="section__lead">Three things that repeat in almost every project.</p>
+      </header>
+
+      <div class="steps">
+        <article class="step reveal">
+          <span class="step__num" aria-hidden="true">01</span>
+          <h3 class="step__title">Data</h3>
+          <p class="step__text">
+            CSV in CP1251, Excel, XML and GeoJSON. Loading, deduplicated merging, mapping to
+            models and calculations: hydrothermal coefficient, temperature and precipitation
+            sums, areas, statistics.
+          </p>
+        </article>
+
+        <article class="step reveal">
+          <span class="step__num" aria-hidden="true">02</span>
+          <h3 class="step__title">Documents</h3>
+          <p class="step__text">
+            Word templates and the Open XML SDK: section tables, title page, table of contents,
+            merging and continuous pagination. No installed Word required for generation.
+          </p>
+        </article>
+
+        <article class="step reveal">
+          <span class="step__num" aria-hidden="true">03</span>
+          <h3 class="step__title">Maps</h3>
+          <p class="step__text">
+            Leaflet and GeoJSON: layers of sites, fields and roads, switching basemaps
+            Google / Yandex / Bing / ESRI / OSM, legends and coordinate binding.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="stack">
+    <div class="wrap">
+      <header class="section__head reveal">
+        <p class="eyebrow">04 — Stack</p>
+        <h2 class="section__title">What I work with</h2>
+      </header>
+
+      <div class="stack">
+        <div class="stack__group reveal">
+          <h3 class="stack__title">Languages</h3>
+          <ul class="chips"><li class="chip">C#</li><li class="chip">JavaScript</li><li class="chip">HTML</li><li class="chip">CSS</li></ul>
+        </div>
+        <div class="stack__group reveal">
+          <h3 class="stack__title">Platform</h3>
+          <ul class="chips"><li class="chip">.NET 10</li><li class="chip">WinForms</li><li class="chip">ASP.NET Core</li><li class="chip">EF Core</li></ul>
+        </div>
+        <div class="stack__group reveal">
+          <h3 class="stack__title">Data &amp; messaging</h3>
+          <ul class="chips"><li class="chip">PostgreSQL</li><li class="chip">RabbitMQ</li><li class="chip">Excel</li><li class="chip">CSV (CP1251)</li><li class="chip">XML</li></ul>
+        </div>
+        <div class="stack__group reveal">
+          <h3 class="stack__title">Documents</h3>
+          <ul class="chips"><li class="chip">Open XML SDK</li><li class="chip">DocumentFormat.OpenXml</li><li class="chip">Word templates</li></ul>
+        </div>
+        <div class="stack__group reveal">
+          <h3 class="stack__title">Maps</h3>
+          <ul class="chips"><li class="chip">Leaflet</li><li class="chip">GeoJSON</li><li class="chip">Bootstrap 4</li><li class="chip">jQuery</li></ul>
+        </div>
+        <div class="stack__group reveal">
+          <h3 class="stack__title">Tools</h3>
+          <ul class="chips"><li class="chip">Visual Studio 2022</li><li class="chip">Rider</li><li class="chip">Git</li><li class="chip">xUnit</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="stats">
+    <div class="wrap">
+      <header class="section__head reveal">
+        <p class="eyebrow">05 — GitHub</p>
+        <h2 class="section__title">Code in the open</h2>
+        <p class="section__lead">Repositories, gists and commit history in the <a href="https://github.com/brainstable" target="_blank" rel="noopener">@brainstable</a> profile.</p>
+      </header>
+
+      <div class="gh-panel reveal">
+        <div class="gh-panel__body">
+          <p class="gh-panel__handle">@brainstable</p>
+          <ul class="gh-facts">
+            <li><b>4</b><span>public repositories</span></li>
+            <li><b>75</b><span>private</span></li>
+            <li><b>2017</b><span>on GitHub since</span></li>
+          </ul>
+        </div>
+        <a class="btn btn--primary" href="https://github.com/brainstable" target="_blank" rel="noopener">Open profile&nbsp;↗</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contacts">
+    <div class="wrap">
+      <header class="section__head reveal">
+        <p class="eyebrow">06 — Contacts</p>
+        <h2 class="section__title">Get in touch</h2>
+        <p class="section__lead">Email and messengers on request; GitHub is the fastest way.</p>
+      </header>
+
+      <div class="contacts">
+        <a class="contact reveal" href="https://github.com/brainstable" target="_blank" rel="noopener">
+          <span class="contact__label">GitHub</span>
+          <span class="contact__value">@brainstable</span>
+        </a>
+        <a class="contact reveal" href="https://gist.github.com/brainstable" target="_blank" rel="noopener">
+          <span class="contact__label">Gists</span>
+          <span class="contact__value">gist.github.com/brainstable</span>
+        </a>
+        <a class="contact reveal" href="https://github.com/brainstable/brainstable/issues" target="_blank" rel="noopener">
+          <span class="contact__label">Issues</span>
+          <span class="contact__value">questions and ideas</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <p class="footer__text">© <span class="js-year">2026</span> Sergey Mozgovoy</p>
+    <p class="footer__text footer__muted">HTML, CSS and a bit of JS — no build step. Hosted on GitHub Pages.</p>
+  </div>
+</footer>
+</body>
+</html>
