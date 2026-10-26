@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Сергей Мозговой — резюме · C#/.NET, AgTech, GIS</title>
+<meta name="description" content="Резюме Сергея Мозгового: C#/.NET-разработчик с опытом в сельском хозяйстве, сортоиспытании и ГИС. Backend на ASP.NET Core, WinForms, PostgreSQL/PostGIS, автоматизация отчётности.">
+<meta name="author" content="Сергей Мозговой">
+<meta name="theme-color" content="#f6f8fb">
+<script>
+  (function () {
+    document.documentElement.classList.add('js');
+    try {
+      var param = null;
+      try {
+        param = new URLSearchParams(window.location.search).get('theme');
+      } catch (e) { /* старые браузеры */ }
+
+      var saved = localStorage.getItem('theme');
+      var theme = (param === 'light' || param === 'dark') ? param
+        : (saved === 'light' || saved === 'dark') ? saved
+        : 'light';
+
+      document.documentElement.dataset.theme = theme;
+    } catch (e) {
+      document.documentElement.dataset.theme = 'light';
+    }
+  })();
+</script>
+<link rel="canonical" href="https://brainstable.github.io/resume/">
+<link rel="alternate" hreflang="ru" href="https://brainstable.github.io/resume/">
+<link rel="alternate" hreflang="en" href="https://brainstable.github.io/en/resume/">
+<link rel="alternate" hreflang="x-default" href="https://brainstable.github.io/resume/">
+<meta property="og:type" content="profile">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Сергей Мозговой — резюме">
+<meta property="og:description" content="C#/.NET-разработчик: backend, десктоп, ГИС и автоматизация отчётности в агрономии и сортоиспытании.">
+<meta property="og:url" content="https://brainstable.github.io/resume/">
+<meta property="og:image" content="https://brainstable.github.io/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script src="../assets/js/main.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+
+<header class="header" id="header">
+  <div class="wrap header__inner">
+    <a class="brand" href="../" aria-label="На главную">
+      <span class="brand__mark" aria-hidden="true">СМ</span>
+      <span class="brand__name">Мозговой Сергей</span>
+    </a>
+
+    <nav class="nav" aria-label="Разделы">
+      <a class="nav__link" href="../#projects">Проекты</a>
+      <a class="nav__link" href="../#internal">Внутренние</a>
+      <a class="nav__link" href="../#approach">Подход</a>
+      <a class="nav__link" href="../#stack">Стек</a>
+      <a class="nav__link is-active" href="./" aria-current="page">Резюме</a>
+    </nav>
+
+    <div class="lang" aria-label="Язык">
+      <span class="lang__link is-active" aria-current="true">RU</span>
+      <a class="lang__link" href="../en/resume/" hreflang="en" lang="en">EN</a>
+    </div>
+
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Включить светлую тему" aria-pressed="false" title="Светлая тема">
+      <svg class="icon icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.4v2.2M12 19.4v2.2M21.6 12h-2.2M4.6 12H2.4M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6M18.8 18.8l-1.6-1.6M6.8 6.8L5.2 5.2"/></svg>
+      <svg class="icon icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.3A8.5 8.5 0 0 1 9.7 3.5a8.5 8.5 0 1 0 10.8 10.8Z"/></svg>
+    </button>
+
+    <a class="btn btn--ghost btn--sm header__gh" href="https://github.com/brainstable" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.4 7.4 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+      GitHub
+    </a>
+  </div>
+</header>
+
+<main id="main">
+  <div class="cv">
+    <h1 class="cv__name">Сергей Мозговой</h1>
+    <p class="cv__role">C#/.NET-разработчик · AgTech · GIS · обработка данных</p>
+
+    <ul class="cv__meta">
+      <li>Москва · офис / гибрид / удалённо</li>
+      <li>коммерческая разработка с 2021</li>
+      <li>агрономия и сортоиспытание — с 2008</li>
+    </ul>
+
+    <div class="cv__actions">
+      <a class="btn btn--primary" href="../assets/resume-ru.pdf" download="Mozgovoy_Sergey_CV_RU.pdf">Скачать PDF</a>
+      <button class="btn btn--ghost" type="button" onclick="window.print()">Распечатать</button>
+      <a class="btn btn--ghost" href="../#contacts">Написать</a>
+    </div>
+
+    <div class="cv__grid">
+      <div class="cv__main">
+        <section class="cv-block">
+          <h2 class="cv-block__title">Профиль</h2>
+          <p class="card__text" style="margin-bottom:.7rem">
+            Разработчик C#/.NET с коммерческим опытом с 2021 года и более десяти лет работы
+            в сельском хозяйстве: сортоиспытание, агрохимия, растениеводство. Специализируюсь
+            на задачах на стыке разработки ПО, ГИС и обработки сельскохозяйственных данных.
+          </p>
+          <p class="card__text" style="margin-bottom:0">
+            Самостоятельно прохожу полный цикл: анализ требований, проектирование модели данных
+            и приложения, реализация, внедрение и сопровождение. Делаю backend-сервисы на
+            ASP.NET Core, десктопные приложения на WinForms, интеграционные слои к legacy-системам
+            и инструменты автоматизации отчётности.
+          </p>
+        </section>
+
+        <section class="cv-block">
+          <h2 class="cv-block__title">Опыт работы</h2>
+
+          <article class="cv-role">
+            <div class="cv-role__head">
+              <h3 class="cv-role__title">Backend Developer</h3>
+              <span class="cv-role__period">07.2024 — 02.2026</span>
+            </div>
+            <p class="cv-role__company">«Альтура»</p>
+            <ul class="cv-list">
+              <li>Backend-сервисы информационно-аналитической платформы на C#/.NET и ASP.NET Core; самостоятельно проектировал REST API, модели данных и структуру сервисов.</li>
+              <li>Спроектировал и реализовал backend картографического сервиса geo-globus: приложение, API и базу PostgreSQL/PostGIS.</li>
+              <li>EF Core, LINQ, async/await, DI; миграции, транзакции и индексы PostgreSQL, устранение N+1 и оптимизация запросов.</li>
+              <li>Межсервисное взаимодействие через RabbitMQ/EasyNetQ, фоновые задачи Quartz.NET, политики Polly (retry, circuit breaker, timeout).</li>
+              <li>Интеграции с внешними HTTP API, OpenSearch (mapping, batch-запись, поиск, агрегации), Docker и Kubernetes-манифесты, GitLab CI/CD.</li>
+            </ul>
+            <ul class="cv-tags">
+              <li class="chip">C#</li><li class="chip">ASP.NET Core</li><li class="chip">EF Core</li><li class="chip">PostgreSQL/PostGIS</li><li class="chip">RabbitMQ</li><li class="chip">OpenSearch</li><li class="chip">Quartz.NET</li><li class="chip">Docker</li>
+            </ul>
+          </article>
+
+          <article class="cv-role">
+            <div class="cv-role__head">
+              <h3 class="cv-role__title">Главный программист</h3>
+              <span class="cv-role__period">09.2021 — 07.2024 · 0,5 ставки с 08.2024</span>
+            </div>
+            <p class="cv-role__company">ФГБУ «Госсорткомиссия»</p>
+            <ul class="cv-list">
+              <li>Полный цикл разработки и сопровождения систем государственного сортоиспытания: центральный аппарат, 45 филиалов, сортоучастки и лаборатории.</li>
+              <li>Создал интеграционный слой между legacy-системой Centura и .NET-приложениями и генератор объектной модели и CRUD-кода — более 600 тыс. строк сгенерированного кода.</li>
+              <li>Разработал и развиваю систему «СПРАВКА»: агрегация и анализ результатов сортоиспытаний и лабораторных исследований, исторические данные примерно за 30 лет.</li>
+              <li>Спроектировал PostgreSQL-базу более чем из 100 связанных таблиц и утилиты переноса данных из Centura.</li>
+              <li>Планирование мест испытаний, приложения к приказам и регистры для ФГИС «Семеноводство», двусторонний обмен данными.</li>
+              <li>Автоматизировал аналитические выборки, характеристики сортов и гибридов, Excel- и Word-документы, материалы экспертной комиссии; отдельные операции ускорены в сотни раз.</li>
+            </ul>
+            <ul class="cv-tags">
+              <li class="chip">C#</li><li class="chip">.NET Framework</li><li class="chip">WinForms</li><li class="chip">PostgreSQL</li><li class="chip">EF Core</li><li class="chip">ADO.NET</li><li class="chip">XML</li>
+            </ul>
+          </article>
+
+          <article class="cv-role">
+            <div class="cv-role__head">
+              <h3 class="cv-role__title">Ведущий агроном</h3>
+              <span class="cv-role__period">12.2008 — 03.2017 · 06–10.2017 · 08.2019 — 10.2022</span>
+            </div>
+            <p class="cv-role__company">Краснотуранский государственный сортоиспытательный участок</p>
+            <ul class="cv-list">
+              <li>Полный цикл полевых сортоиспытаний: планирование и закладка опытов, посев, фенологические наблюдения, учёт урожая.</li>
+              <li>Статистическая обработка результатов и рандомизация; разрабатывал прикладные программы для обработки экспериментальных данных.</li>
+            </ul>
+          </article>
+
+          <article class="cv-role">
+            <div class="cv-role__head">
+              <h3 class="cv-role__title">Ведущий агрохимик → начальник отдела мониторинга плодородия почв</h3>
+              <span class="cv-role__period">03–06.2017 · 10.2017 — 08.2019</span>
+            </div>
+            <p class="cv-role__company">Минусинская агрохимическая станция</p>
+            <ul class="cv-list">
+              <li>Организовывал агрохимические и эколого-токсикологические обследования земель общей площадью более 200 тыс. га.</li>
+              <li>Мониторинг плодородия, почвенная и листовая диагностика, агрохимические картограммы, рекомендации по удобрениям.</li>
+              <li>Разработал систему «ГСАС Минусинская» с переносом данных из FoxPro, программы «Нитраты» и расчёта баланса питательных веществ.</li>
+            </ul>
+          </article>
+
+          <article class="cv-role">
+            <div class="cv-role__head">
+              <h3 class="cv-role__title">Агроном</h3>
+              <span class="cv-role__period">01.2021 — 09.2021</span>
+            </div>
+            <p class="cv-role__company">ЗАО «Искра Ленина»</p>
+            <ul class="cv-list">
+              <li>Растениеводство на площади около 6000 га: производственный цикл, технологические карты, севообороты, удобрения, защита растений, картирование полей.</li>
+            </ul>
+          </article>
+        </section>
+
+        <section class="cv-block">
+          <h2 class="cv-block__title">Проекты</h2>
+          <ul class="cv-list cv-list--tight">
+            <li><strong>Агрометеорологическая информационная система</strong> — архив наблюдений примерно за 20 лет: суммы температур, осадки, снежный покров, ГТК, заморозки, ФАР. C#/.NET, PostgreSQL/PostGIS, RabbitMQ, Quartz.NET, Playwright.</li>
+            <li><strong>Brainstable.Applications</strong> — сборка официального бюллетеня: 13 CSV-выгрузок, 15 таблиц, 16 Word-шаблонов и один <code>.docx</code> с титулом и нумерацией.</li>
+            <li><strong>BarleyGWAS</strong> — обработка фенотипических и генотипических данных ячменя коллекции ВИР: контроль качества, статистика, визуализация GWAS. C#/.NET, WinForms, R.</li>
+            <li><strong>GeoPlots и GeoHistory</strong> — интерактивные карты на Leaflet: сортоучастки и исчезнувшие деревни с историческими данными.</li>
+          </ul>
+        </section>
+      </div>
+
+      <aside class="cv__aside">
+        <section class="cv-block">
+          <h2 class="cv-block__title">Навыки</h2>
+          <ul class="cv-tags" style="margin-bottom:.9rem">
+            <li class="chip">C#</li><li class="chip">.NET 10</li><li class="chip">ASP.NET Core</li><li class="chip">WinForms</li><li class="chip">REST API</li><li class="chip">EF Core</li><li class="chip">LINQ</li><li class="chip">async/await</li><li class="chip">SOLID</li>
+          </ul>
+          <ul class="cv-tags" style="margin-bottom:.9rem">
+            <li class="chip">PostgreSQL</li><li class="chip">PostGIS</li><li class="chip">SQL</li><li class="chip">RabbitMQ</li><li class="chip">OpenSearch</li><li class="chip">NetTopologySuite</li><li class="chip">GeoJSON</li><li class="chip">ArcGIS</li><li class="chip">QGIS</li>
+          </ul>
+          <ul class="cv-tags" style="margin-bottom:.9rem">
+            <li class="chip">сортоиспытание</li><li class="chip">полевые опыты</li><li class="chip">агрохимия</li><li class="chip">агрометеорология</li><li class="chip">статистика</li><li class="chip">R</li>
+          </ul>
+          <ul class="cv-tags">
+            <li class="chip">Git</li><li class="chip">GitLab CI/CD</li><li class="chip">Docker</li><li class="chip">Kubernetes</li><li class="chip">Swagger</li><li class="chip">Polly</li><li class="chip">Quartz.NET</li>
+          </ul>
+        </section>
+
+        <section class="cv-block">
+          <h2 class="cv-block__title">Образование</h2>
+          <div class="cv-role">
+            <h3 class="cv-role__title">Аспирантура, селекция и генетика</h3>
+            <p class="cv-role__company">ВИР им. Н. И. Вавилова</p>
+            <p class="cv-list--tight" style="color:var(--muted);font-size:.88rem;margin:0">2024 — н. в. · GWAS хозяйственно ценных признаков ячменя</p>
+          </div>
+          <div class="cv-role">
+            <h3 class="cv-role__title">Магистратура, агрономия</h3>
+            <p class="cv-role__company">Красноярский ГАУ</p>
+            <p class="cv-list--tight" style="color:var(--muted);font-size:.88rem;margin:0">2018</p>
+          </div>
+          <div class="cv-role">
+            <h3 class="cv-role__title">Физика и информатика</h3>
+            <p class="cv-role__company">Хакасский государственный университет</p>
+            <p class="cv-list--tight" style="color:var(--muted);font-size:.88rem;margin:0">незаконченное высшее</p>
+          </div>
+        </section>
+
+        <section class="cv-block">
+          <h2 class="cv-block__title">Языки</h2>
+          <div class="cv-fact"><span>Русский</span><span>родной</span></div>
+          <div class="cv-fact"><span>Английский</span><span>чтение технической литературы</span></div>
+        </section>
+
+        <section class="cv-block" id="contacts">
+          <h2 class="cv-block__title">Контакты</h2>
+          <div class="cv-links">
+            <a href="https://github.com/brainstable" target="_blank" rel="noopener">github.com/brainstable</a>
+            <a href="https://brainstable.github.io/">brainstable.github.io</a>
+            <a href="https://github.com/brainstable/brainstable/issues" target="_blank" rel="noopener">Issues — вопросы и предложения</a>
+          </div>
+          <p class="cv-list--tight" style="color:var(--muted);font-size:.82rem;margin:.7rem 0 0">Email и телефон — по запросу.</p>
+        </section>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <p class="footer__text">© <span class="js-year">2026</span> Сергей Мозговой</p>
+    <p class="footer__text footer__muted"><a href="../">brainstable.github.io</a> · резюме обновлено в октябре 2026</p>
+  </div>
+</footer>
+</body>
+</html>

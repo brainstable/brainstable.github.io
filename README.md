@@ -9,17 +9,29 @@
 ```
 index.html                 страница (русская)
 en/index.html              страница (английская)
-assets/css/style.css       оформление: светлая и тёмная темы
+resume/index.html          резюме (русское)
+en/resume/index.html       резюме (английское)
+assets/css/style.css       оформление: светлая и тёмная темы, стили резюме и печати
 assets/js/main.js          появление блоков, подсветка меню, переключатель темы
 assets/img/*.svg, *.jpg    иллюстрации и превью проектов (есть светлые версии)
 assets/og.png              картинка для соцсетей, ru, 1200×630
 assets/og-en.png           картинка для соцсетей, en, 1200×630
+assets/resume-ru.pdf       резюме для скачивания (ru, 3 страницы)
+assets/resume-en.pdf       резюме для скачивания (en, 3 страницы)
 assets/favicon.svg         иконка
 maps/geoplots/             живая карта сортоучастков (Leaflet)
 maps/geohistory/           живая карта исчезнувших деревень (Leaflet)
 .nojekyll                  отключает обработку Jekyll
 404.html                   страница для несуществующих адресов
 ```
+
+## Резюме
+
+- <https://brainstable.github.io/resume/> — русская версия
+- <https://brainstable.github.io/en/resume/> — английская
+- Печатная вёрстка в `@media print` (белый лист, без шапки и меню), PDF собраны из неё через Chrome `--print-to-pdf`.
+
+Исходные документы (несколько версий под разные вакансии) лежат в папке `docs/` вне репозитория сайта и в git не попадают.
 
 ## Языки
 
