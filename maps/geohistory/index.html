@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <script src="data/locations.js" text="text/javascript"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div style="text-align:center;padding:14px 0 4px"><a href="/" style="display:inline-block;padding:7px 14px;border-radius:9px;background:#0f151d;color:#6ee7b7;font:600 13px/1 -apple-system,Segoe UI,sans-serif;text-decoration:none;border:1px solid rgba(110,231,183,.4)">← на сайт</a></div>
+
+<div class="container">
+  <h2>ИСЧЕЗНУВШИЕ НАСЕЛЕННЫЕ ПУНКТЫ ЮГА КРАСНОЯРСКОГО КРАЯ</h2>
+  <p></p>
+  <div class="panel-group" id="accordion">
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion"  href="#collapse1">ИДРИНСКИЙ РАЙОН</a>
+        </h4>
+      </div>
+      <div id="collapse1" class="panel-collapse collapse">
+        <ul class="list-group">
+        </ul>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion"  href="#collapse2">КРАСНОТУРАНСКИЙ РАЙОН</a>
+        </h4>
+      </div>
+      <div id="collapse2" class="panel-collapse collapse">
+        <ul class="list-group">
+        </ul>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion"  href="#collapse3">КУРАГИНСКИЙ РАЙОН</a>
+        </h4>
+      </div>
+      <div id="collapse3" class="panel-collapse collapse">
+        <ul class="list-group">
+        </ul>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion"  href="#collapse4">МИНУСИНСКИЙ РАЙОН</a>
+        </h4>
+      </div>
+      <div id="collapse4" class="panel-collapse collapse">
+        <ul class="list-group">
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="list-group">
+  <div class="text-left list-group-item list-group-item-action list-group-item-dark active mx-auto">
+      2020 &copy; Mozgovoy Sergey
+  </div>
+</div>
+
+<script>
+  var arr = data;
+  arr.sort(function(left, right){
+    if (left.name < right.name) return -1;
+    if (left.name > right.name) return 1;
+    return 0;
+  });
+  
+  var col1 = document.querySelector('#collapse1 .list-group');
+  arr.forEach(function(item) {
+    if (item.rayon == 'Идринский' && item.isdeserted > 0) {
+      var li = document.createElement('li');
+      li.classList.add('list-group-item');
+      col1.appendChild(li);
+
+      var a = document.createElement('a');
+      a.setAttribute('href', 'geohistory.html?id=' + item.id);
+      a.textContent = item.name;
+      li.appendChild(a);
+    }
+  });
+
+  var col2 = document.querySelector('#collapse2 .list-group');
+  arr.forEach(function(item) {
+    if (item.rayon == 'Краснотуранский' && item.isdeserted > 0) {
+      var li = document.createElement('li');
+      li.classList.add('list-group-item');
+      col2.appendChild(li);
+
+      var a = document.createElement('a');
+      a.setAttribute('href', 'geohistory.html?id=' + item.id);
+      a.textContent = item.name;
+      li.appendChild(a);
+    }
+  });
+
+  var col3 = document.querySelector('#collapse3 .list-group');
+  arr.forEach(function(item) {
+    if (item.rayon == 'Курагинский' && item.isdeserted > 0) {
+      var li = document.createElement('li');
+      li.classList.add('list-group-item');
+      col3.appendChild(li);
+
+      var a = document.createElement('a');
+      a.setAttribute('href', 'geohistory.html?id=' + item.id);
+      a.textContent = item.name;
+      li.appendChild(a);
+    }
+  });
+
+  var col4 = document.querySelector('#collapse4 .list-group');
+  arr.forEach(function(item) {
+    if (item.rayon == 'Минусинский' && item.isdeserted > 0) {
+      var li = document.createElement('li');
+      li.classList.add('list-group-item');
+      col4.appendChild(li);
+
+      var a = document.createElement('a');
+      a.setAttribute('href', 'geohistory.html?id=' + item.id);
+      a.textContent = item.name;
+      li.appendChild(a);
+    }
+  });
+</script>
+</body>
+</html>

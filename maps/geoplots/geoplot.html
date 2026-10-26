@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="Мозговой Сергей">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">  
+        <title>Сортоучастки</title>
+
+        <link rel="stylesheet" href="lib/style.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!-- FONT AWESOME CDN -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <script src="data/plots.js"></script>
+        <script src="lib/func.js"></script>
+        <script src="lib/style.js"></script>
+        <script src="lib/oef.js"></script>
+        <script src="lib/controls.js"></script>
+        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript" src="lib/controls.js"></script>
+
+        <script src="data/plots.geojson" type="text/javascript"></script>
+        <script src="data/fields.geojson" type="text/javascript"></script>
+        <script src="data/cultures.geojson" type="text/javascript"></script>
+        <script src="data/roads.geojson" type="text/javascript"></script>
+        <script src="data/forestbelts.geojson" type="text/javascript"></script>
+    </head>
+    <body>
+<a href="/" style="position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:99999;padding:7px 14px;border-radius:9px;background:rgba(10,14,19,.88);color:#6ee7b7;font:600 13px/1 -apple-system,Segoe UI,sans-serif;text-decoration:none;border:1px solid rgba(110,231,183,.4)">← на сайт</a>
+        <div id="map">
+        <script>
+            //=========================================
+            //                       Карта
+            //=========================================
+
+            var plotId = getAllUrlParams().gsu;
+            var plot = data[plotId];
+            var centerPlot = [plot.lat, plot.lon];
+            var mapInfo = '<b style="color: black; text-transform: uppercase; font-size: 130%"">' + plot.region + 
+                            '</b></br><b style="color: blue; text-transform: uppercase; font-size: 100%">' + 
+                            plot.gsu + '</b></br><b style="color: darkgreen"><i>' + 
+                            plot.zone + '</i></b>';
+
+            var delta = 0.08;
+            var centerMap = L.latLng(centerPlot); // Координаты центра
+            var topMap = L.latLng(centerMap.lat - delta, centerMap.lng - delta);
+            var downMap = L.latLng(centerMap.lat + delta, centerMap.lng + delta);
+            var zoomMap = 14;
+
+            // Опции карты
+            var mapOptions = {
+                center: centerMap, // центр
+                //minZoom: 12,       // минимальный зум
+                //maxZoom: 19,       // максимальный зум
+                zoom: zoomMap,          // зум инициализации
+                attributionControl: true,
+                zoomControl: false,
+                //maxBounds: [ topMap, downMap ]   // ограничивающий экстент
+            }
+
+            // Инициализация карты
+            var map = L.map('map', mapOptions);
+
+            // ==============================================================  
+            //                   
+            // ==============================================================  
+            var filial = '<b>' + new Date().getFullYear() + ' &copy; Филиал ФГБУ &quot;Госсорткомиссия&quot; по Красноярскому краю, Республике Хакасия и Республике Тыва<b>';
+
+            // ==============================================================  
+            //                          КАРТЫ
+            // ==============================================================  
+                
+            var osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 20,
+                    attribution: 'OpenStreetMap ' + filial
+                })
+                //.addTo(map);
+
+            var googleHybrid = L.tileLayer('https://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{
+                    maxZoom: 20,
+                    subdomains:['mt0','mt1','mt2','mt3'],
+                    attribution: 'Google Hybrid ' + filial
+                })
+                //.addTo(map);   
+
+            var googleSat = L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+                    maxZoom: 20,
+                    subdomains:['mt0','mt1','mt2','mt3'],
+                    attribution: 'Google Satellite ' + filial
+                })
+                .addTo(map);
+
+            var esriWorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+                    maxZoom: 20,
+                    attribution: 'EsriWorldImagery ' + filial
+                })
+                //.addTo(map);
+
+            var googleTerrain = L.tileLayer('https://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}',{
+                    maxZoom: 20,
+                    subdomains:['mt0','mt1','mt2','mt3'],
+                    attribution: 'Google Terrain ' + filial
+                });
+            
+            L.control.layers( {
+                        "Google Спутник" : googleSat,
+                        "Google Гибрид" : googleHybrid,
+                        "ESRI Спутник" : esriWorldImagery,
+                        "OSM Местность" : osmLayer
+                    }
+                )
+                .addTo(map);
+            
+
+            //L.control.layers(baseMaps).addTo(map);
+             
+            //=============================================
+            //           СЛОИ
+            //=============================================
+            // текущий слой
+            var currentLayer;
+
+            // Слой сортоучастка
+            var fullLayerVisible = true;
+            var fullLayer = L.geoJson(plots,{
+                style: fullStyle,
+                onEachFeature: fullOnEachFeature
+            })
+            .addTo(map);
+            currentLayer = fullLayer;
+            
+            // Слой дорог
+            var roadLayerVisible = false;
+            var roadLayer = L.geoJson(roads, {
+                style: roadStyle
+                })
+            
+            // Слой полей
+            var fieldLayerVisible = false;
+            var fieldLayer = L.geoJson(fields, {
+                style: fieldStyle,
+                onEachFeature: fieldOnEachFeature
+            })
+
+            // Слой культур
+            var cultureLayerVisible = false;
+            var cultureLayer = L.geoJson(cultures, {
+                style: cultureNameStyleColor,
+                onEachFeature: cultureOnEachFeature
+            })
+            
+            //========================================
+            // Добавление контрола масштаба
+            L.control.scale().addTo(map);
+			//========================================
+            
+
+            //========================================
+
+            var info = L.control({position: 'topleft'});
+            info.onAdd = function (map) {
+                this._div = L.DomUtil.create('div', 'info'); 
+                this.update();
+                return this._div;
+            };
+            info.update = function (props) {
+                this._div.innerHTML = mapInfo;
+            };
+            info.addTo(map);
+
+            //=============================
+
+            L.control.zoom({
+                    position: 'topleft'
+                }).addTo(map);
+
+
+            //---------------------------
+
+            
+
+            
+            //==============================
+            // Кнопка для перехода на главную страницу
+            //================================
+            
+            var back = L.control({position: 'bottomright'});
+            back.onAdd = function (map) {
+                this._div = L.DomUtil.create('div', 'card btn btn-primary'); 
+                this.update();
+                return this._div;
+            };
+            back.update = function (props) {
+                this._div.innerHTML = '<b><a href="index.html" title="Перейти на главную страницу">ГЛАВНАЯ</a></b>';
+            };
+            back.addTo(map);
+            
+            //========================================
+            // ЛЕГЕНДЫ
+            //========================================
+            // Текущаялегенда
+            var currentLegend;  
+
+            //========================================
+            // Добавление легенды Культуры
+            //========================================
+            var legendVisible = false;
+			var legendCultures = L.control({ position: "bottomleft" });
+
+			legendCultures.onAdd = function(map) {
+			  var div = L.DomUtil.create("div", "legend");
+			  div.innerHTML += "<h4>Культуры</h4>";
+              div.innerHTML += '<i style="background: DarkOrchid"></i><span>Донник</span><br>';
+                div.innerHTML += '<i style="background: #1CA9C9"></i><span>Горох посевной</span><br>';
+              div.innerHTML += '<i style="background: DarkOrchid"></i><span>Гречиха</span><br>';
+                div.innerHTML += '<i style="background: #007D34"></i><span>Кукуруза</span><br>';
+              div.innerHTML += '<i style="background: #F7F21A"></i><span>Лен масличный</span><br>';
+              div.innerHTML += '<i style="background: DarkOrchid"></i><span>Люцерна</span><br>';
+              div.innerHTML += '<i style="background: OrangeRed"></i><span>Овес яровой</span><br>';
+                div.innerHTML += '<i style="background: #403A3A"></i><span>Пар черный</span><br>';
+              div.innerHTML += '<i style="background: DarkOrchid"></i><span>Пшеница озимая</span><br>';
+              div.innerHTML += '<i style="background: #FFCF40"></i><span>Пшеница яровая</span><br>';
+              div.innerHTML += '<i style="background: DarkOrchid"></i><span>Рапс яровой</span><br>';
+              div.innerHTML += '<i style="background: DarkOrchid"></i><span>Рожь озимая</span><br>';
+                div.innerHTML += '<i style="background: #FF6347"></i><span>Соя</span><br>';
+			  div.innerHTML += '<i style="background: LawnGreen"></i><span>Эспарцет</span><br>';
+              div.innerHTML += '<i style="background: Magenta"></i><span>Ячмень яровой</span><br>';
+			  return div;
+			};
+
+			legendCultures.addTo(map);
+
+            //================================================
+            //
+            //================================================
+
+            
+/*
+            var overlayMaps = {
+                "Границы сортоучастка" : fullLayer,
+                "Границы полей (участков)": fieldLayer,
+                "Культуры 2020 года": cultureLayer,
+                "Дороги" : roadLayer
+                
+            };
+            //L.control.layers(overlayMaps).addTo(map);
+            L.control.layers([], overlayMaps).addTo(map);
+*/
+
+            //========================================
+            // Кнопка для возвращения в исходное состояние
+            //========================================
+/*
+            L.control.custom({
+                position: 'topright',
+                content : '<button class="btn btn-default btn-sm" id="changeImg">'+
+                          '    <i class="fa fa-refresh"></i></button>',
+                classes : '',
+                style   :
+                {
+                    margin: '0px 12px 10px 0px',
+                    padding: '3px',
+                },
+                events:
+                {
+                    click: function(data)
+                    {
+                        map.setView(centerMap, zoomMap);
+                    }
+                }
+            })
+            .addTo(map);
+*/
+            //========================================
+            // Функция для управления отображением легенды
+            //========================================
+            var addLegendCultures = function(){
+                var elem = document.querySelector('.legend');
+                if (legendVisible == false) {
+                    elem.style.visibility = 'visible';
+                    legendVisible = true;
+                }
+            }
+
+            var removeLegendCultures = function(){
+                var elem = document.querySelector('.legend');
+                if (legendVisible == true) {
+                    elem.style.visibility = 'hidden';
+                    legendVisible = false;
+                }
+            }
+
+            //===================================
+            // Функции для возвращения в исходное состояние
+            //===================================
+            var returnToBack = function() {
+                map.setView(centerMap, zoomMap);
+            }
+
+            //===================================
+            // Функции для управления отображением слоев
+            //===================================
+
+            // Очистить все слои
+            var clearLayers = function() {
+                currentLayer = null;
+                fullLayerVisible = false;
+                roadLayerVisible = false;
+                fieldLayerVisible = false;
+                cultureLayerVisible = false;
+
+                map.removeLayer(fullLayer);
+                map.removeLayer(fieldLayer);
+                map.removeLayer(cultureLayer);
+
+                removeLegendCultures();
+            }
+
+            // Отображение границ
+            var addRemoveFullLayer = function() {
+                clearLayers();
+                if (fullLayerVisible == false) {
+                    map.addLayer(fullLayer);
+                    fullLayerVisible = true;
+                    currentLayer = fullLayer;
+                } else {
+                    map.removeLayer(fullLayer);
+                    fullLayerVisible = false;
+                }
+            }
+
+            // Отображение полей
+            var addRemoveFieldLayer = function() {
+                clearLayers();
+                if (fieldLayerVisible == false) {
+                    map.addLayer(fieldLayer);
+                    fieldLayerVisible = true;
+                    currentLayer = fieldLayer;
+                } else {
+                    map.removeLayer(fieldLayer);
+                    fieldLayerVisible = false;
+                }
+            }
+
+            // Отображение культур
+            var addRemoveCultureLayer = function() {
+                clearLayers();
+                if (cultureLayerVisible == false) {
+                    map.addLayer(cultureLayer);
+                    cultureLayerVisible = true;
+                    currentLayer = cultureLayer;
+                    addLegendCultures();
+                } else {
+                    map.removeLayer(cultureLayer);
+                    cultureLayerVisible = false;
+                    removeLegendCultures();
+                }
+            }
+
+            L.control.custom({
+                position: 'topright',
+                content : '<button type="button" class="btn btn-success" onclick="addRemoveFullLayer()" title="Отобразить границу">'+
+                          '    <i class="fa fa-square-o" aria-hidden="false"></i>'+
+                          '</button>'+
+
+                          '<button type="button" class="btn btn-info" onclick="addRemoveFieldLayer()" title="Отобразить поля">'+
+                          '    <i class="fa fa-minus-square-o"></i>'+
+                          '</button>'+
+
+                          '<button type="button" class="btn btn-dark" onclick="addRemoveCultureLayer()" title="Отобразить культуры 2020 года">'+
+                          '2020'+
+                          '</button>'+
+
+                          '<button type="button" class="btn btn-danger" onclick="clearLayers()" title="Очистить слои">'+
+                          '    <i class="fa fa-close"></i>'+
+                          '</button>' +
+
+                          '<button type="button" class="btn btn-warning" onclick="returnToBack()" title="Вернуться в исходное состояние">'+
+                          '<i class="fa fa-crosshairs"></i></button>',
+                classes : 'btn-group-vertical btn-group-sm',
+                style   :
+                {
+                    margin: '10px',
+                    padding: '0px 0 0 0',
+                    cursor: 'pointer'
+                },
+                datas   :
+                {
+                    'foo': 'bar',
+                }
+            })
+            .addTo(map);
+
+        </script>
+    </body>
+</html>

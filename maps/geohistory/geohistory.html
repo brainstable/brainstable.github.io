@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Карта</title>
+  <link rel="stylesheet" href="lib/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <script src="data/locations.js" text="text/javascript"></script>
+  <script src="data/poligon_died_locations.geojson" type="text/javascript"></script>
+  <script src="data/died_locations.geojson" type="text/javascript"></script>
+  <script src="data/life_locations.geojson" type="text/javascript"></script>
+  <script src="data/roads.geojson" type="text/javascript"></script>
+
+  <script src="lib/func.js"></script>
+  <script src="lib/style.js"></script>
+  <script src="lib/oef.js"></script>
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+</head>
+<body>
+<a href="/" style="position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:99999;padding:7px 14px;border-radius:9px;background:rgba(10,14,19,.88);color:#6ee7b7;font:600 13px/1 -apple-system,Segoe UI,sans-serif;text-decoration:none;border:1px solid rgba(110,231,183,.4)">← на сайт</a>
+<div id='map'></div>  
+  <script>
+    var locId = getAllUrlParams().id;
+    var loc = data[locId];
+    var x = loc.x;
+    var y = loc.y;
+    var mapInfo = '<h5>' + loc.rayon + ' район</h5><h4>' + loc.name + '</h4>';
+
+    // Опции карты
+    var mapOptions = {
+        //center: centerMap, // центр
+        maxZoom: 19,       // максимальный зум
+        zoom: 14,          // зум инициализации
+        attributionControl: true,
+        zoomControl: true
+    }
+
+    // Инициализация карты
+    var map = L.map('map', mapOptions);
+    map.setView([y, x], 14);
+
+    //===============================================
+
+    function locOnEachFeature(feature, layer) {
+        var popupContent = '';
+        if (feature.properties && feature.properties.Name) {
+            popupContent = "<b>" + feature.properties.Name + "</b></br>";
+        }
+        //layer.bindPopup(popupContent);
+        layer.bindTooltip(popupContent).openTooltip();
+    };
+
+    //===============================================
+
+    var poligonDiedLocationsLayer = L.geoJson(poligonDiedLocations).addTo(map);
+
+    var oldRoads = L.geoJson(roads).addTo(map);
+
+    //===============================================
+    function diedLocStyle(feature){
+        return {
+            radiys : 1000,
+            weight : 2,
+            color : 'red'
+        }
+    };
+
+    var diedLocIcon = L.icon({
+        iconUrl: 'lib/images/marker_red.png',
+        iconSize: [32, 32],
+        iconAnchor: [16, 32],
+        popupAnchor: [0, -32]
+    });
+
+    function getDiedLocMarker (feature, latlng) {      
+        return L.marker(latlng, {icon: diedLocIcon});
+    };
+
+    var diedLocationsLayer = L.geoJson(diedLoc, {
+        style : diedLocStyle,
+        onEachFeature: locOnEachFeature,
+        pointToLayer: getDiedLocMarker
+    })
+    .addTo(map);
+
+    //===============================================
+    function locStyle(feature){
+        return {
+            radiys : 1000,
+            weight : 2,
+            color : 'red'
+        }
+    };
+
+    var locIcon = L.icon({
+        iconUrl: 'lib/images/marker_blue.png',
+        iconSize: [32, 32],
+        iconAnchor: [16, 32],
+        popupAnchor: [0, -32]
+    });
+
+    function getLocMarker (feature, latlng) {      
+        return L.marker(latlng, {icon: locIcon});
+    };
+
+    var locationsLayer = L.geoJson(lifeLoc, {
+        style : locStyle,
+        onEachFeature: locOnEachFeature,
+        pointToLayer: getLocMarker
+    })
+    .addTo(map);
+    // ==============================================================  
+    //                          КАРТЫ
+    // ==============================================================  
+    var autor = 'Mozgovoy Sergey';
+
+    var osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: 'OpenStreetMap ' + autor
+        })
+        //.addTo(map);
+
+    var googleHybrid = L.tileLayer('https://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{
+            maxZoom: 20,
+            subdomains:['mt0','mt1','mt2','mt3'],
+            attribution: 'Google Hybrid ' + autor
+        })
+        .addTo(map);   
+
+    var googleSat = L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+            maxZoom: 20,
+            subdomains:['mt0','mt1','mt2','mt3'],
+            attribution: 'Google Satellite ' + autor
+        })
+        //.addTo(map);
+
+    var esriWorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'EsriWorldImagery ' + autor
+        })
+        //.addTo(map);
+
+    var googleTerrain = L.tileLayer('https://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}',{
+            maxZoom: 20,
+            subdomains:['mt0','mt1','mt2','mt3'],
+            attribution: 'Google Terrain ' + autor
+        });
+
+    var baseMaps = {
+        "Google Гибрид" : googleHybrid,
+        "Google Спутник" : googleSat,
+        "Google Местность" : googleTerrain,
+        "ESRI Спутник" : esriWorldImagery,
+        "OSM Местность" : osmLayer
+    };
+    
+    L.control.layers(baseMaps).addTo(map);
+
+    //================================================
+
+    var info = L.control({position: 'bottomright'});
+    info.onAdd = function (map) {
+        this._div = L.DomUtil.create('div', 'info'); 
+        this.update();
+        return this._div;
+    };
+    info.update = function (props) {
+        this._div.innerHTML = mapInfo;
+    };
+    info.addTo(map);
+
+    //---------------------------
+
+    var back = L.control({position: 'topleft'});
+    back.onAdd = function (map) {
+        this._div = L.DomUtil.create('div', 'card btn btn-primary'); 
+        this.update();
+        return this._div;
+    };
+    back.update = function (props) {
+        this._div.innerHTML = '<a href="index.html" title="Перейти на главную страницу">Назад</a>';
+    };
+    back.addTo(map);
+    
+    //======================================================
+
+    var overlayMaps = {
+        "Старые дороги": oldRoads,
+        "Границы исчезнувших населенных пунктов" : poligonDiedLocationsLayer,
+        "Исчезнувшие населенные пункты": diedLocationsLayer,
+        "Существующие населенные пункты": locationsLayer
+    };
+    L.control.layers([], overlayMaps).addTo(map);
+
+  </script>
+</body>
+</html>
