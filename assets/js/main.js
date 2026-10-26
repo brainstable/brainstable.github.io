@@ -83,6 +83,47 @@
 
   setTheme(root.dataset.theme === 'dark' ? 'dark' : 'light', false);
 
+  /* Карусели скриншотов ----------------------------------------------- */
+  Array.prototype.forEach.call(document.querySelectorAll('[data-carousel]'), function (root) {
+    var viewport = root.querySelector('.carousel__viewport');
+    if (!viewport) return;
+
+    var items = viewport.children;
+    var counter = root.querySelector('.carousel__count');
+    var prevBtn = root.querySelector('.carousel__btn--prev');
+    var nextBtn = root.querySelector('.carousel__btn--next');
+
+    if (items.length < 2) {
+      if (prevBtn) prevBtn.hidden = true;
+      if (nextBtn) nextBtn.hidden = true;
+      return;
+    }
+
+    var current = function () {
+      return Math.max(0, Math.min(items.length - 1, Math.round(viewport.scrollLeft / viewport.clientWidth)));
+    };
+
+    var update = function () {
+      if (counter) counter.textContent = (current() + 1) + ' / ' + items.length;
+    };
+
+    var go = function (delta) {
+      viewport.scrollBy({ left: delta * viewport.clientWidth, behavior: 'smooth' });
+    };
+
+    if (prevBtn) prevBtn.addEventListener('click', function () { go(-1); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { go(1); });
+
+    viewport.addEventListener('scroll', update, { passive: true });
+    viewport.addEventListener('keydown', function (event) {
+      if (event.key === 'ArrowLeft') { event.preventDefault(); go(-1); }
+      if (event.key === 'ArrowRight') { event.preventDefault(); go(1); }
+    });
+    window.addEventListener('resize', update);
+
+    update();
+  });
+
   /* Год в подвале ------------------------------------------------------ */
   Array.prototype.forEach.call(document.querySelectorAll('.js-year'), function (el) {
     el.textContent = String(new Date().getFullYear());

@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Приложения — МетеоГСУ, посевные площади, справка, статистика · Сергей Мозговой</title>
+<meta name="description" content="Четыре внутренние программы для сортоиспытания: анализ метеоданных, посевные площади, справка по сортоиспытаниям и статистическая обработка. Скриншоты и описание.">
+<meta name="author" content="Сергей Мозговой">
+<meta name="theme-color" content="#f6f8fb">
+<script>
+  (function () {
+    document.documentElement.classList.add('js');
+    try {
+      var param = null;
+      try {
+        param = new URLSearchParams(window.location.search).get('theme');
+      } catch (e) { /* старые браузеры */ }
+
+      var saved = localStorage.getItem('theme');
+      var theme = (param === 'light' || param === 'dark') ? param
+        : (saved === 'light' || saved === 'dark') ? saved
+        : 'light';
+
+      document.documentElement.dataset.theme = theme;
+    } catch (e) {
+      document.documentElement.dataset.theme = 'light';
+    }
+  })();
+</script>
+<link rel="canonical" href="https://brainstable.github.io/apps/">
+<link rel="alternate" hreflang="ru" href="https://brainstable.github.io/apps/">
+<link rel="alternate" hreflang="en" href="https://brainstable.github.io/en/apps/">
+<link rel="alternate" hreflang="x-default" href="https://brainstable.github.io/apps/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Приложения — МетеоГСУ и другие программы">
+<meta property="og:description" content="Четыре внутренние программы для сортоиспытания: метеоданные, площади, справка, статистика.">
+<meta property="og:url" content="https://brainstable.github.io/apps/">
+<meta property="og:image" content="https://brainstable.github.io/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script src="../assets/js/main.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+
+<header class="header" id="header">
+  <div class="wrap header__inner">
+    <a class="brand" href="../" aria-label="На главную">
+      <span class="brand__mark" aria-hidden="true">СМ</span>
+      <span class="brand__name">Мозговой Сергей</span>
+    </a>
+
+    <nav class="nav" aria-label="Разделы">
+      <a class="nav__link" href="../#projects">Проекты</a>
+      <a class="nav__link is-active" href="./" aria-current="page">Приложения</a>
+      <a class="nav__link" href="../#approach">Подход</a>
+      <a class="nav__link" href="../#stack">Стек</a>
+      <a class="nav__link" href="../resume/">Резюме</a>
+      <a class="nav__link" href="../#contacts">Контакты</a>
+    </nav>
+
+    <div class="lang" aria-label="Язык">
+      <span class="lang__link is-active" aria-current="true">RU</span>
+      <a class="lang__link" href="../en/apps/" hreflang="en" lang="en">EN</a>
+    </div>
+
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Включить светлую тему" aria-pressed="false" title="Светлая тема">
+      <svg class="icon icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.4v2.2M12 19.4v2.2M21.6 12h-2.2M4.6 12H2.4M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6M18.8 18.8l-1.6-1.6M6.8 6.8L5.2 5.2"/></svg>
+      <svg class="icon icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.3A8.5 8.5 0 0 1 9.7 3.5a8.5 8.5 0 1 0 10.8 10.8Z"/></svg>
+    </button>
+
+    <a class="btn btn--ghost btn--sm header__gh" href="https://github.com/brainstable" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.4 7.4 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+      GitHub
+    </a>
+  </div>
+</header>
+
+<main id="main">
+  <div class="apps">
+    <h1 class="cv__name">Приложения</h1>
+    <p class="cv__role">МетеоГСУ · посевные площади · справка · статистика</p>
+    <p class="apps__lead">
+      Четыре настольные программы, написанные для сортоиспытания и агрономии. Часть из них
+      используется в филиале Госсорткомиссии и КрасГАУ. Скриншоты — из рабочей практики,
+      листайте стрелками, клавишами или свайпом.
+    </p>
+
+    <section class="app">
+      <div class="app__head">
+        <h2 class="app__title">МетеоГСУ</h2>
+        <span class="app__sub">анализ и визуализация метеоданных</span>
+      </div>
+      <p class="app__text">
+        Настольное приложение для работы с метеоданными, привязанными к сортоучасткам.
+        Данные по месяцам и декадам по шести показателям: средняя, максимальная и минимальная
+        температура, осадки, высота снежного покрова и точка росы. Программа считает ГТК,
+        даты перехода температуры через 0, 5, 10 и 15 °C, суммы температур и осадков,
+        безморозный период, показывает таблицы и графики, загружает и объединяет архивы rp5,
+        выгружает результаты в Excel.
+      </p>
+      <ul class="chips">
+        <li class="chip">C#</li><li class="chip">WinForms</li><li class="chip">Excel</li><li class="chip">rp5</li>
+      </ul>
+      <div class="carousel" data-carousel aria-roledescription="карусель" aria-label="Скриншоты МетеоГСУ">
+        <div class="carousel__viewport" tabindex="0" aria-live="polite">
+                      <div class="carousel__item"><img src="img/meteo/01.jpg" alt="МетеоГСУ — экран 1" loading="eager" decoding="async"></div>
+            <div class="carousel__item"><img src="img/meteo/02.jpg" alt="МетеоГСУ — экран 2" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="img/meteo/03.jpg" alt="МетеоГСУ — экран 3" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="img/meteo/04.jpg" alt="МетеоГСУ — экран 4" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="img/meteo/05.jpg" alt="МетеоГСУ — экран 5" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="img/meteo/06.jpg" alt="МетеоГСУ — экран 6" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="img/meteo/07.jpg" alt="МетеоГСУ — экран 7" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="img/meteo/08.jpg" alt="МетеоГСУ — экран 8" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="img/meteo/09.jpg" alt="МетеоГСУ — экран 9" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="img/meteo/10.jpg" alt="МетеоГСУ — экран 10" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="img/meteo/11.jpg" alt="МетеоГСУ — экран 11" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="img/meteo/12.jpg" alt="МетеоГСУ — экран 12" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="img/meteo/13.jpg" alt="МетеоГСУ — экран 13" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="img/meteo/14.jpg" alt="МетеоГСУ — экран 14" loading="lazy" decoding="async"></div>
+        </div>
+        <button class="carousel__btn carousel__btn--prev" type="button" aria-label="Предыдущий скриншот">‹</button>
+        <button class="carousel__btn carousel__btn--next" type="button" aria-label="Следующий скриншот">›</button>
+        <div class="carousel__bar">
+          <span class="carousel__count">1 / 14</span>
+          <span class="carousel__hint">стрелки или свайп</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="app">
+      <div class="app__head">
+        <h2 class="app__title">Посевные площади</h2>
+        <span class="app__sub">учёт площадей по культурам</span>
+      </div>
+      <p class="app__text">
+        Программа для ввода и визуализации посевных площадей сельскохозяйственных культур
+        по хозяйствам и районам, с выгрузкой данных в Excel и сохранением в XML.
+      </p>
+      <ul class="chips">
+        <li class="chip">C#</li><li class="chip">WinForms</li><li class="chip">XML</li><li class="chip">Excel</li>
+      </ul>
+      <div class="carousel" data-carousel aria-roledescription="карусель" aria-label="Скриншоты программы «Посевные площади»">
+        <div class="carousel__viewport" tabindex="0" aria-live="polite">
+                      <div class="carousel__item"><img src="img/plots/01.jpg" alt="Посевные площади — экран 1" loading="eager" decoding="async"></div>
+            <div class="carousel__item"><img src="img/plots/02.jpg" alt="Посевные площади — экран 2" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="img/plots/03.jpg" alt="Посевные площади — экран 3" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="img/plots/04.jpg" alt="Посевные площади — экран 4" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="img/plots/05.jpg" alt="Посевные площади — экран 5" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="img/plots/06.jpg" alt="Посевные площади — экран 6" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="img/plots/07.jpg" alt="Посевные площади — экран 7" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="img/plots/08.jpg" alt="Посевные площади — экран 8" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="img/plots/09.jpg" alt="Посевные площади — экран 9" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="img/plots/10.jpg" alt="Посевные площади — экран 10" loading="lazy" decoding="async"></div>
+        </div>
+        <button class="carousel__btn carousel__btn--prev" type="button" aria-label="Предыдущий скриншот">‹</button>
+        <button class="carousel__btn carousel__btn--next" type="button" aria-label="Следующий скриншот">›</button>
+        <div class="carousel__bar">
+          <span class="carousel__count">1 / 10</span>
+          <span class="carousel__hint">стрелки или свайп</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="app">
+      <div class="app__head">
+        <h2 class="app__title">Справка по сортоиспытаниям</h2>
+        <span class="app__sub">сорта, характеристики, результаты</span>
+      </div>
+      <p class="app__text">
+        Справочная система по сортам и результатам сортоиспытаний: карточки сортов
+        и характеристик, выборки по культурам и участкам, отчёты и выгрузка в Excel.
+        Данные хранятся в XML.
+      </p>
+      <ul class="chips">
+        <li class="chip">C#</li><li class="chip">WinForms</li><li class="chip">XML</li><li class="chip">Excel</li>
+      </ul>
+      <div class="carousel" data-carousel aria-roledescription="карусель" aria-label="Скриншоты «Справки по сортоиспытаниям»">
+        <div class="carousel__viewport" tabindex="0" aria-live="polite">
+                      <div class="carousel__item"><img src="img/reference/01.jpg" alt="Справка по сортоиспытаниям — экран 1" loading="eager" decoding="async"></div>
+            <div class="carousel__item"><img src="img/reference/02.jpg" alt="Справка по сортоиспытаниям — экран 2" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="img/reference/03.jpg" alt="Справка по сортоиспытаниям — экран 3" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="img/reference/04.jpg" alt="Справка по сортоиспытаниям — экран 4" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="img/reference/05.jpg" alt="Справка по сортоиспытаниям — экран 5" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="img/reference/06.jpg" alt="Справка по сортоиспытаниям — экран 6" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="img/reference/07.jpg" alt="Справка по сортоиспытаниям — экран 7" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="img/reference/08.jpg" alt="Справка по сортоиспытаниям — экран 8" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="img/reference/09.jpg" alt="Справка по сортоиспытаниям — экран 9" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="img/reference/10.jpg" alt="Справка по сортоиспытаниям — экран 10" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="img/reference/11.jpg" alt="Справка по сортоиспытаниям — экран 11" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="img/reference/12.jpg" alt="Справка по сортоиспытаниям — экран 12" loading="lazy" decoding="async"></div>
+        </div>
+        <button class="carousel__btn carousel__btn--prev" type="button" aria-label="Предыдущий скриншот">‹</button>
+        <button class="carousel__btn carousel__btn--next" type="button" aria-label="Следующий скриншот">›</button>
+        <div class="carousel__bar">
+          <span class="carousel__count">1 / 12</span>
+          <span class="carousel__hint">стрелки или свайп</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="app">
+      <div class="app__head">
+        <h2 class="app__title">Статобработка</h2>
+        <span class="app__sub">статистика полевых опытов</span>
+      </div>
+      <p class="app__text">
+        Статистическая обработка данных сортоиспытаний: схемы опытов, повторности, группы,
+        площади и влажность; расчёты, сводные таблицы и выгрузка в Excel, сохранение
+        результатов в XML.
+      </p>
+      <ul class="chips">
+        <li class="chip">C#</li><li class="chip">WinForms</li><li class="chip">статистика</li><li class="chip">Excel</li>
+      </ul>
+      <div class="carousel" data-carousel aria-roledescription="карусель" aria-label="Скриншоты «Статобработки»">
+        <div class="carousel__viewport" tabindex="0" aria-live="polite">
+                      <div class="carousel__item"><img src="img/stats/01.jpg" alt="Статобработка — экран 1" loading="eager" decoding="async"></div>
+            <div class="carousel__item"><img src="img/stats/02.jpg" alt="Статобработка — экран 2" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="img/stats/03.jpg" alt="Статобработка — экран 3" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="img/stats/04.jpg" alt="Статобработка — экран 4" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="img/stats/05.jpg" alt="Статобработка — экран 5" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="img/stats/06.jpg" alt="Статобработка — экран 6" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="img/stats/07.jpg" alt="Статобработка — экран 7" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="img/stats/08.jpg" alt="Статобработка — экран 8" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="img/stats/09.jpg" alt="Статобработка — экран 9" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="img/stats/10.jpg" alt="Статобработка — экран 10" loading="lazy" decoding="async"></div>
+        </div>
+        <button class="carousel__btn carousel__btn--prev" type="button" aria-label="Предыдущий скриншот">‹</button>
+        <button class="carousel__btn carousel__btn--next" type="button" aria-label="Следующий скриншот">›</button>
+        <div class="carousel__bar">
+          <span class="carousel__count">1 / 10</span>
+          <span class="carousel__hint">стрелки или свайп</span>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <p class="footer__text">© <span class="js-year">2026</span> Сергей Мозговой</p>
+    <p class="footer__text footer__muted"><a href="../">brainstable.github.io</a> · приложения для сортоиспытания</p>
+  </div>
+</footer>
+</body>
+</html>

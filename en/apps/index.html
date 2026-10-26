@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Applications — MeteoGSU, sown areas, reference, statistics · Sergey Mozgovoy</title>
+<meta name="description" content="Four internal applications for variety testing: weather data analysis, sown areas, variety testing reference and statistical processing. Screenshots and descriptions.">
+<meta name="author" content="Sergey Mozgovoy">
+<meta name="theme-color" content="#f6f8fb">
+<script>
+  (function () {
+    document.documentElement.classList.add('js');
+    try {
+      var param = null;
+      try {
+        param = new URLSearchParams(window.location.search).get('theme');
+      } catch (e) { /* older browsers */ }
+
+      var saved = localStorage.getItem('theme');
+      var theme = (param === 'light' || param === 'dark') ? param
+        : (saved === 'light' || saved === 'dark') ? saved
+        : 'light';
+
+      document.documentElement.dataset.theme = theme;
+    } catch (e) {
+      document.documentElement.dataset.theme = 'light';
+    }
+  })();
+</script>
+<link rel="canonical" href="https://brainstable.github.io/en/apps/">
+<link rel="alternate" hreflang="ru" href="https://brainstable.github.io/apps/">
+<link rel="alternate" hreflang="en" href="https://brainstable.github.io/en/apps/">
+<link rel="alternate" hreflang="x-default" href="https://brainstable.github.io/apps/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Applications — MeteoGSU and other tools">
+<meta property="og:description" content="Four internal applications for variety testing: weather data, areas, reference, statistics.">
+<meta property="og:url" content="https://brainstable.github.io/en/apps/">
+<meta property="og:image" content="https://brainstable.github.io/assets/og-en.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<script src="../../assets/js/main.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="header" id="header">
+  <div class="wrap header__inner">
+    <a class="brand" href="../" aria-label="Back to home">
+      <span class="brand__mark" aria-hidden="true">СМ</span>
+      <span class="brand__name">Sergey Mozgovoy</span>
+    </a>
+
+    <nav class="nav" aria-label="Sections">
+      <a class="nav__link" href="../#projects">Projects</a>
+      <a class="nav__link is-active" href="./" aria-current="page">Applications</a>
+      <a class="nav__link" href="../#approach">Approach</a>
+      <a class="nav__link" href="../#stack">Stack</a>
+      <a class="nav__link" href="../resume/">Resume</a>
+      <a class="nav__link" href="../#contacts">Contacts</a>
+    </nav>
+
+    <div class="lang" aria-label="Language">
+      <a class="lang__link" href="../../apps/" hreflang="ru" lang="ru">RU</a>
+      <span class="lang__link is-active" aria-current="true">EN</span>
+    </div>
+
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light theme" aria-pressed="false" title="Light theme">
+      <svg class="icon icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.4v2.2M12 19.4v2.2M21.6 12h-2.2M4.6 12H2.4M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6M18.8 18.8l-1.6-1.6M6.8 6.8L5.2 5.2"/></svg>
+      <svg class="icon icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.3A8.5 8.5 0 0 1 9.7 3.5a8.5 8.5 0 1 0 10.8 10.8Z"/></svg>
+    </button>
+
+    <a class="btn btn--ghost btn--sm header__gh" href="https://github.com/brainstable" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.4 7.4 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+      GitHub
+    </a>
+  </div>
+</header>
+
+<main id="main">
+  <div class="apps">
+    <h1 class="cv__name">Applications</h1>
+    <p class="cv__role">MeteoGSU · sown areas · reference · statistics</p>
+    <p class="apps__lead">
+      Four desktop applications built for variety testing and agronomy. Some of them are used at
+      a branch of the state variety-testing commission and at Krasnoyarsk State Agrarian University.
+      Screenshots come from real work — browse with the arrows, the keyboard or a swipe.
+      The application interface is in Russian.
+    </p>
+
+    <section class="app">
+      <div class="app__head">
+        <h2 class="app__title">MeteoGSU</h2>
+        <span class="app__sub">weather data analysis and visualisation</span>
+      </div>
+      <p class="app__text">
+        A desktop application for weather data tied to trial sites. Data is presented by month and
+        decade across six indicators: average, maximum and minimum temperature, precipitation, snow
+        depth and dew point. It calculates the hydrothermal coefficient, dates when temperature
+        crosses 0, 5, 10 and 15 °C, temperature and precipitation sums, the frost-free period,
+        shows tables and charts, merges rp5 archives and exports results to Excel.
+      </p>
+      <ul class="chips">
+        <li class="chip">C#</li><li class="chip">WinForms</li><li class="chip">Excel</li><li class="chip">rp5</li>
+      </ul>
+      <div class="carousel" data-carousel aria-roledescription="carousel" aria-label="MeteoGSU screenshots">
+        <div class="carousel__viewport" tabindex="0" aria-live="polite">
+                      <div class="carousel__item"><img src="../../apps/img/meteo/01.jpg" alt="MeteoGSU — screen 1" loading="eager" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/meteo/02.jpg" alt="MeteoGSU — screen 2" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/meteo/03.jpg" alt="MeteoGSU — screen 3" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/meteo/04.jpg" alt="MeteoGSU — screen 4" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/meteo/05.jpg" alt="MeteoGSU — screen 5" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/meteo/06.jpg" alt="MeteoGSU — screen 6" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/meteo/07.jpg" alt="MeteoGSU — screen 7" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/meteo/08.jpg" alt="MeteoGSU — screen 8" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/meteo/09.jpg" alt="MeteoGSU — screen 9" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/meteo/10.jpg" alt="MeteoGSU — screen 10" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/meteo/11.jpg" alt="MeteoGSU — screen 11" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/meteo/12.jpg" alt="MeteoGSU — screen 12" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/meteo/13.jpg" alt="MeteoGSU — screen 13" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/meteo/14.jpg" alt="MeteoGSU — screen 14" loading="lazy" decoding="async"></div>
+        </div>
+        <button class="carousel__btn carousel__btn--prev" type="button" aria-label="Previous screenshot">‹</button>
+        <button class="carousel__btn carousel__btn--next" type="button" aria-label="Next screenshot">›</button>
+        <div class="carousel__bar">
+          <span class="carousel__count">1 / 14</span>
+          <span class="carousel__hint">arrows or swipe</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="app">
+      <div class="app__head">
+        <h2 class="app__title">Sown areas</h2>
+        <span class="app__sub">crop area records</span>
+      </div>
+      <p class="app__text">
+        An application for entering and visualising sown areas of agricultural crops by farm and
+        district, with Excel export and XML storage.
+      </p>
+      <ul class="chips">
+        <li class="chip">C#</li><li class="chip">WinForms</li><li class="chip">XML</li><li class="chip">Excel</li>
+      </ul>
+      <div class="carousel" data-carousel aria-roledescription="carousel" aria-label="Sown areas screenshots">
+        <div class="carousel__viewport" tabindex="0" aria-live="polite">
+                      <div class="carousel__item"><img src="../../apps/img/plots/01.jpg" alt="Sown areas — screen 1" loading="eager" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/plots/02.jpg" alt="Sown areas — screen 2" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/plots/03.jpg" alt="Sown areas — screen 3" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/plots/04.jpg" alt="Sown areas — screen 4" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/plots/05.jpg" alt="Sown areas — screen 5" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/plots/06.jpg" alt="Sown areas — screen 6" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/plots/07.jpg" alt="Sown areas — screen 7" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/plots/08.jpg" alt="Sown areas — screen 8" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/plots/09.jpg" alt="Sown areas — screen 9" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/plots/10.jpg" alt="Sown areas — screen 10" loading="lazy" decoding="async"></div>
+        </div>
+        <button class="carousel__btn carousel__btn--prev" type="button" aria-label="Previous screenshot">‹</button>
+        <button class="carousel__btn carousel__btn--next" type="button" aria-label="Next screenshot">›</button>
+        <div class="carousel__bar">
+          <span class="carousel__count">1 / 10</span>
+          <span class="carousel__hint">arrows or swipe</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="app">
+      <div class="app__head">
+        <h2 class="app__title">Variety testing reference</h2>
+        <span class="app__sub">varieties, traits, results</span>
+      </div>
+      <p class="app__text">
+        A reference system for varieties and variety-testing results: variety and trait cards,
+        selections by crop and trial site, reports and Excel export. Data is stored in XML.
+      </p>
+      <ul class="chips">
+        <li class="chip">C#</li><li class="chip">WinForms</li><li class="chip">XML</li><li class="chip">Excel</li>
+      </ul>
+      <div class="carousel" data-carousel aria-roledescription="carousel" aria-label="Variety testing reference screenshots">
+        <div class="carousel__viewport" tabindex="0" aria-live="polite">
+                      <div class="carousel__item"><img src="../../apps/img/reference/01.jpg" alt="Variety testing reference — screen 1" loading="eager" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/reference/02.jpg" alt="Variety testing reference — screen 2" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/reference/03.jpg" alt="Variety testing reference — screen 3" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/reference/04.jpg" alt="Variety testing reference — screen 4" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/reference/05.jpg" alt="Variety testing reference — screen 5" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/reference/06.jpg" alt="Variety testing reference — screen 6" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/reference/07.jpg" alt="Variety testing reference — screen 7" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/reference/08.jpg" alt="Variety testing reference — screen 8" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/reference/09.jpg" alt="Variety testing reference — screen 9" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/reference/10.jpg" alt="Variety testing reference — screen 10" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/reference/11.jpg" alt="Variety testing reference — screen 11" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/reference/12.jpg" alt="Variety testing reference — screen 12" loading="lazy" decoding="async"></div>
+        </div>
+        <button class="carousel__btn carousel__btn--prev" type="button" aria-label="Previous screenshot">‹</button>
+        <button class="carousel__btn carousel__btn--next" type="button" aria-label="Next screenshot">›</button>
+        <div class="carousel__bar">
+          <span class="carousel__count">1 / 12</span>
+          <span class="carousel__hint">arrows or swipe</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="app">
+      <div class="app__head">
+        <h2 class="app__title">Statistical processing</h2>
+        <span class="app__sub">field trial statistics</span>
+      </div>
+      <p class="app__text">
+        Statistical processing of variety-testing data: trial designs, replications, groups,
+        plot areas and moisture; calculations, summary tables and Excel export, with results
+        saved to XML.
+      </p>
+      <ul class="chips">
+        <li class="chip">C#</li><li class="chip">WinForms</li><li class="chip">statistics</li><li class="chip">Excel</li>
+      </ul>
+      <div class="carousel" data-carousel aria-roledescription="carousel" aria-label="Statistical processing screenshots">
+        <div class="carousel__viewport" tabindex="0" aria-live="polite">
+                      <div class="carousel__item"><img src="../../apps/img/stats/01.jpg" alt="Statistical processing — screen 1" loading="eager" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/stats/02.jpg" alt="Statistical processing — screen 2" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/stats/03.jpg" alt="Statistical processing — screen 3" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/stats/04.jpg" alt="Statistical processing — screen 4" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/stats/05.jpg" alt="Statistical processing — screen 5" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/stats/06.jpg" alt="Statistical processing — screen 6" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/stats/07.jpg" alt="Statistical processing — screen 7" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/stats/08.jpg" alt="Statistical processing — screen 8" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/stats/09.jpg" alt="Statistical processing — screen 9" loading="lazy" decoding="async"></div>
+            <div class="carousel__item"><img src="../../apps/img/stats/10.jpg" alt="Statistical processing — screen 10" loading="lazy" decoding="async"></div>
+        </div>
+        <button class="carousel__btn carousel__btn--prev" type="button" aria-label="Previous screenshot">‹</button>
+        <button class="carousel__btn carousel__btn--next" type="button" aria-label="Next screenshot">›</button>
+        <div class="carousel__bar">
+          <span class="carousel__count">1 / 10</span>
+          <span class="carousel__hint">arrows or swipe</span>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <p class="footer__text">© <span class="js-year">2026</span> Sergey Mozgovoy</p>
+    <p class="footer__text footer__muted"><a href="../">brainstable.github.io</a> · variety testing applications</p>
+  </div>
+</footer>
+</body>
+</html>
