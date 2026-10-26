@@ -370,6 +370,8 @@ code {
   border-block: 1px solid var(--line);
 }
 
+.section--divided { border-top: 1px solid var(--line); }
+
 .section__head { max-width: 46rem; margin-bottom: clamp(2rem, 4vw, 3rem); }
 
 .section__title {
@@ -405,6 +407,22 @@ code {
   border-color: rgba(110, 231, 183, 0.28);
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
 }
+
+/* Карточки без превью: закрытые проекты */
+
+.projects--closed {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+}
+
+.card--closed {
+  background:
+    radial-gradient(22rem 12rem at 0% 0%, rgba(96, 165, 250, 0.07), transparent 60%),
+    linear-gradient(180deg, var(--card-hi), var(--card));
+}
+
+.card--closed .card__body { padding: 1.5rem 1.4rem; }
+
+.card--closed .chips { margin-top: auto; margin-bottom: 0; }
 
 .card__preview {
   position: relative;
