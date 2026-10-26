@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" role="img" aria-label="Абстрактная карта участков">
+  <defs>
+    <linearGradient id="hm-bg" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#0d1822"/>
+      <stop offset="1" stop-color="#070c12"/>
+    </linearGradient>
+    <linearGradient id="hm-field" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6ee7b7" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#60a5fa" stop-opacity="0.10"/>
+    </linearGradient>
+    <linearGradient id="hm-field2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#60a5fa" stop-opacity="0.24"/>
+      <stop offset="1" stop-color="#6ee7b7" stop-opacity="0.08"/>
+    </linearGradient>
+    <radialGradient id="hm-glow" cx="0.35" cy="0.25" r="0.75">
+      <stop offset="0" stop-color="#6ee7b7" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#6ee7b7" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="hm-glow2" cx="0.8" cy="0.85" r="0.6">
+      <stop offset="0" stop-color="#60a5fa" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#60a5fa" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="hm-grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M50 0H0V50" fill="none" stroke="#ffffff" stroke-opacity="0.045" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="900" height="700" fill="url(#hm-bg)"/>
+  <rect width="900" height="700" fill="url(#hm-grid)"/>
+  <ellipse cx="290" cy="180" rx="420" ry="300" fill="url(#hm-glow)"/>
+  <ellipse cx="760" cy="600" rx="340" ry="260" fill="url(#hm-glow2)"/>
+
+  <!-- дальние контуры -->
+  <g fill="none" stroke="#60a5fa" stroke-opacity="0.22" stroke-width="1.5" stroke-dasharray="6 10">
+    <polygon points="80,120 300,60 520,110 470,300 210,320"/>
+    <polygon points="560,430 820,390 860,620 620,660"/>
+  </g>
+
+  <!-- поля -->
+  <g stroke-linejoin="round">
+    <polygon points="150,405 300,335 455,378 425,520 240,565" fill="url(#hm-field)" stroke="#6ee7b7" stroke-opacity="0.75" stroke-width="2.5"/>
+    <polygon points="470,290 640,240 780,300 750,440 570,455" fill="url(#hm-field2)" stroke="#60a5fa" stroke-opacity="0.65" stroke-width="2"/>
+    <polygon points="300,140 445,105 530,215 385,255" fill="url(#hm-field)" stroke="#6ee7b7" stroke-opacity="0.45" stroke-width="1.5"/>
+  </g>
+
+  <!-- внутренние границы полей -->
+  <g stroke="#0a1118" stroke-opacity="0.55" stroke-width="2">
+    <path d="M240 380 L455 430"/>
+    <path d="M330 345 L395 500"/>
+    <path d="M560 265 L700 355"/>
+  </g>
+
+  <!-- старые дороги -->
+  <path d="M40 640 C 210 600, 300 500, 430 476 S 690 470, 860 372"
+        fill="none" stroke="#60a5fa" stroke-opacity="0.55" stroke-width="3" stroke-dasharray="12 14" stroke-linecap="round"/>
+  <path d="M120 90 C 260 150, 330 230, 440 250"
+        fill="none" stroke="#6ee7b7" stroke-opacity="0.35" stroke-width="2" stroke-dasharray="6 12" stroke-linecap="round"/>
+
+  <!-- точки -->
+  <g fill="#9fb3c8" fill-opacity="0.5">
+    <circle cx="205" cy="250" r="3"/>
+    <circle cx="655" cy="170" r="3"/>
+    <circle cx="520" cy="600" r="3"/>
+    <circle cx="742" cy="520" r="2.5"/>
+    <circle cx="120" cy="480" r="2.5"/>
+    <circle cx="610" cy="330" r="2.5"/>
+  </g>
+
+  <!-- маркеры -->
+  <g>
+    <circle cx="300" cy="440" r="26" fill="#6ee7b7" fill-opacity="0.10" stroke="#6ee7b7" stroke-opacity="0.45"/>
+    <circle cx="300" cy="440" r="8" fill="#6ee7b7"/>
+    <circle cx="640" cy="350" r="22" fill="#60a5fa" fill-opacity="0.12" stroke="#60a5fa" stroke-opacity="0.45"/>
+    <circle cx="640" cy="350" r="7" fill="#60a5fa"/>
+    <circle cx="405" cy="180" r="16" fill="#6ee7b7" fill-opacity="0.14"/>
+    <circle cx="405" cy="180" r="5" fill="#6ee7b7" fill-opacity="0.85"/>
+  </g>
+
+  <!-- легенда -->
+  <g transform="translate(570, 560)">
+    <rect width="250" height="86" rx="12" fill="#0a1118" fill-opacity="0.82" stroke="#ffffff" stroke-opacity="0.10"/>
+    <circle cx="24" cy="28" r="5" fill="#6ee7b7"/>
+    <text x="42" y="32" font-family="ui-monospace, Consolas, monospace" font-size="12" fill="#c8d4e2">граница участка</text>
+    <circle cx="24" cy="56" r="5" fill="#60a5fa"/>
+    <text x="42" y="60" font-family="ui-monospace, Consolas, monospace" font-size="12" fill="#c8d4e2">поле / культура</text>
+  </g>
+</svg>
